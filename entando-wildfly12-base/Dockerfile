@@ -60,7 +60,6 @@ ENV PORTDB_NONXA="true" \
     LOGFILEPREFIX="/var/log/entando/engine_" \
     LOGNAME="/var/log/entando/engine.log" \
     LOGACTIVEFILEOUTPUT="true" \
-    LOGNAME="/var/log/entando/engine.log" \
     LOGFILEROTATEPATTERN="/var/log/entando/engine_%i.log.gz" \
     RESOURCEDISKROOTFOLDER="/entando-data/resources/" \
     PROTECTEDRESOURCEDISKROOTFOLDER="/entando-data/protected/" \

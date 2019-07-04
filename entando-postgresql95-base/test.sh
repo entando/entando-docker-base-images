@@ -8,3 +8,5 @@ docker exec postgresql-test /usr/libexec/s2i/test/run || { echo "PostreSQL Image
 docker rm $(docker stop postgresql-test) || true
 
 
+cd ../sample-maven-project
+./run-smoke-tests.sh wildfly postgresql

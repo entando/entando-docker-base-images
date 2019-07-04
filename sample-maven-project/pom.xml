@@ -127,18 +127,18 @@
             <version>${entando.version}</version>
             <type>war</type>
         </dependency>
-        <dependency>
-            <groupId>org.entando.entando.plugins</groupId>
-            <artifactId>entando-plugin-jpdigital-exchange</artifactId>
-            <version>${entando.version}</version>
-            <type>war</type>
-        </dependency>
-        <dependency>
-            <groupId>org.entando.entando</groupId>
-            <artifactId>entando-keycloak-auth</artifactId>
-            <version>${entando.keycloak.plugin.version}</version>
-            <type>war</type>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.entando.entando.plugins</groupId>-->
+            <!--<artifactId>entando-plugin-jpdigital-exchange</artifactId>-->
+            <!--<version>${entando.version}</version>-->
+            <!--<type>war</type>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.entando.entando</groupId>-->
+            <!--<artifactId>entando-keycloak-auth</artifactId>-->
+            <!--<version>${entando.keycloak.plugin.version}</version>-->
+            <!--<type>war</type>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.entando.entando</groupId>
             <artifactId>entando-admin-console</artifactId>
@@ -291,7 +291,7 @@
                 <app.builder.depends.on></app.builder.depends.on>
 
                 <skipServerImage>true</skipServerImage>
-                <jboss.home.in.image>none</jboss.home.in.image>
+                <deployments.dir>none</deployments.dir>
                 <server.base.image>none</server.base.image>
 
                 <derby.base.folder>${project.build.directory}/derby/${env.db.environment}</derby.base.folder>
@@ -322,7 +322,7 @@
                 <app.builder.depends.on>${project.artifactId}-engine</app.builder.depends.on>
 
                 <skipServerImage>false</skipServerImage>
-                <jboss.home.in.image>/opt/eap</jboss.home.in.image>
+                <deployments.dir>/opt/eap/standalone/deployments</deployments.dir>
                 <server.base.image>entando-eap71-clustered-base</server.base.image>
 
                 <derby.base.folder>/entando-data/databases</derby.base.folder>
@@ -340,7 +340,7 @@
                 <app.builder.depends.on>${project.artifactId}-engine</app.builder.depends.on>
 
                 <skipServerImage>false</skipServerImage>
-                <jboss.home.in.image>/wildfly</jboss.home.in.image>
+                <deployments.dir>/wildfly/standalone/deployments</deployments.dir>
                 <server.base.image>entando-wildfly12-base</server.base.image>
 
                 <derby.base.folder>/entando-data/databases</derby.base.folder>
@@ -358,7 +358,7 @@
                 <app.builder.depends.on>${project.artifactId}-engine</app.builder.depends.on>
 
                 <skipServerImage>false</skipServerImage>
-                <jboss.home.in.image>none</jboss.home.in.image>
+                <deployments.dir>/tomcat/webapps</deployments.dir>
                 <server.base.image>entando-tomcat85-base</server.base.image>
 
                 <derby.base.folder>/entando-data/databases</derby.base.folder>
@@ -377,7 +377,7 @@
                 <app.builder.depends.on>${project.artifactId}-engine</app.builder.depends.on>
 
                 <skipServerImage>false</skipServerImage>
-                <jboss.home.in.image>/wildfly</jboss.home.in.image>
+                <deployments.dir>/wildfly/standalone/deployments</deployments.dir>
                 <server.base.image>entando-jetty948-base</server.base.image>
 
                 <derby.base.folder>/entando-data/databases</derby.base.folder>
@@ -405,7 +405,7 @@
                 <servdb.jndi>java:/jdbc/servDataSource</servdb.jndi>
 
                 <!-- DB work required from the server image. Create the template Derby databases -->
-                <server.init.command>$ENTANDO_COMMON_PATH/init-derby-from-war.sh --war-file=${jboss.home.in.image}/standalone/deployments/${project.build.finalName}.war --jetty-version=${jetty.version}</server.init.command>
+                <server.init.command>$ENTANDO_COMMON_PATH/init-derby-from-war.sh --war-file=${deployments.dir}/${project.build.finalName}.war --jetty-version=${jetty.version}</server.init.command>
             </properties>
         </profile>
         <profile>
@@ -613,7 +613,7 @@
                                 <skip>${skipServerImage}</skip>
                                 <assembly>
                                     <descriptorRef>artifact</descriptorRef>
-                                    <targetDir>${jboss.home.in.image}/standalone/deployments</targetDir>
+                                    <targetDir>${deployments.dir}/</targetDir>
                                 </assembly>
                                 <nocache>true</nocache>
                                 <env>
@@ -628,8 +628,8 @@
                                     <SERVDB_JNDI>${servdb.jndi}</SERVDB_JNDI>
                                     <DB_ENVIRONMENT>${env.db.environment}</DB_ENVIRONMENT>
                                     <DB_STARTUP_CHECK>true</DB_STARTUP_CHECK>
-                                    <ORACLE_REPO_USER>a.barnard@entando.com</ORACLE_REPO_USER>
-                                    <ORACLE_REPO_PASSWORD><![CDATA[Ainn!kk1]]></ORACLE_REPO_PASSWORD>
+                                    <ORACLE_REPO_USER><![CDATA[${oracle.repo.user}]]></ORACLE_REPO_USER>
+                                    <ORACLE_REPO_PASSWORD><![CDATA[${oracle.repo.password}]]></ORACLE_REPO_PASSWORD>
                                 </env>
                                 <runCmds>
                                     <run>${server.init.command}</run>
@@ -648,7 +648,9 @@
                                         <volume>${project.artifactId}-entando-data:/entando-data</volume>
                                     </bind>
                                 </volumes>
+                                
                                 <env>
+                                    <!--<JAVA_OPTS>-Djava.security.egd=/dev/./urandom -Djava.awt.headless=true -Xmx1024m -XX:MaxPermSize=512m -XX:+UseConcMarkSweepGC</JAVA_OPTS>-->
                                     <PORTDB_USERNAME>${portdb.username}</PORTDB_USERNAME>
                                     <PORTDB_PASSWORD>${portdb.password}</PORTDB_PASSWORD>
                                     <PORTDB_URL>${portdb.url}</PORTDB_URL>
@@ -965,7 +967,7 @@
                         <baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
                             <resourcesAsCSV>src/main/webapp,${project.build.directory}/${project.build.finalName}</resourcesAsCSV>
                         </baseResource>
-                        <defaultsDescriptor>${basedir}/src/main/jetty/webdefault.xml</defaultsDescriptor>
+                        <defaultsDescriptor>${project.basedir}/src/main/jetty/webdefault.xml</defaultsDescriptor>
                         <contextPath>/${project.artifactId}</contextPath>
                         <jettyEnvXml>${project.basedir}/src/main/jetty/jetty-env.xml</jettyEnvXml>
                     </webApp>

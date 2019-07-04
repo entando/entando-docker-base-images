@@ -1,5 +1,5 @@
 ARG ENTANDO_IMAGE_VERSION
-FROM entando/entando-dependencies-base:$ENTANDO_IMAGE_VERSION as dependencies
+FROM entando/entando-base-common:$ENTANDO_IMAGE_VERSION as entando-base-common
 
 FROM centos/mysql-57-centos7:latest
 LABEL io.openshift.s2i.destination="/opt/s2i/destination" \
@@ -37,15 +37,30 @@ ENV PORTDB_USERNAME=agile \
     ENV_FILES="" \
     PREPARE_DATA="true" \
     DB_ENVIRONMENT="production" \
+    ENTANDO_OIDC_ACTIVE="false" \
+    ENTANDO_OIDC_AUTH_LOCATION="http://dummy.com" \
+    ENTANDO_OIDC_TOKEN_LOCATION="http://dummy.com" \
+    ENTANDO_OIDC_CLIENT_ID="dummy" \
+    ENTANDO_OIDC_REDIRECT_BASE_URL="http://dummy.com" \
+    ALGO_DEFAULT_KEY="changeit" \
+    KEYCLOAK_ENABLED="false" \
+    KEYCLOAK_AUTHURL="http://dummy.com" \
+    KEYCLOAK_REALM="dummy" \
+    KEYCLOAK_CLIENTID="dummy" \
+    KEYCLOAK_CLIENTSECRET="dummy" \
+    KEYCLOAK_PUBLICCLIENTID="dummy" \
     LOGFILEPREFIX="/var/log/entando/engine_" \
     LOGNAME="/var/log/entando/engine.log" \
+    LOGACTIVEFILEOUTPUT="true" \
     LOGFILEROTATEPATTERN="/var/log/entando/engine_%i.log.gz" \
-    LOGACTIVEFILEOUTPUT="true"
+    RESOURCEDISKROOTFOLDER="/entando-data/resources/" \
+    PROTECTEDRESOURCEDISKROOTFOLDER="/entando-data/protected/" \
+    INDEXDISKROOTFOLDER="/tmp/entando-indices"
 
 COPY --chown=27:0 ./mysql /usr/share/container-scripts/mysql
-COPY --chown=27:0 --from=dependencies /opt/app-root/src/.m2/settings.xml $HOME/.m2/settings.xml
-COPY --chown=27:0 --from=dependencies /opt/app-root/src/jetty-runner /jetty-runner
-COPY --chown=27:0 --from=dependencies ${ENTANDO_COMMON_PATH} ${ENTANDO_COMMON_PATH}
+COPY --chown=27:0 --from=entando-base-common /opt/app-root/src/.m2 $HOME/.m2
+COPY --chown=27:0 --from=entando-base-common /opt/app-root/src/jetty-runner /jetty-runner
+COPY --chown=27:0 --from=entando-base-common ${ENTANDO_COMMON_PATH} ${ENTANDO_COMMON_PATH}
 COPY --chown=27:0 ./s2i/bin/ $STI_SCRIPTS_PATH
 COPY test /etc/mysql-test-datasources
 RUN mkdir -p /opt/s2i/destination && chmod -R ug+rw /opt/s2i/destination && chown -R $USERID_TO_USE:0 /opt/s2i/destination && \

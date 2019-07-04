@@ -7,4 +7,7 @@ sleep 5
 docker exec mysql-test /usr/libexec/s2i/test/run || { echo "MySQL Image test failed"; exit -1; }
 docker rm $(docker stop mysql-test) || true
 
+cd ../sample-maven-project
+./run-smoke-tests.sh wildfly mysql || exit 43
+
 

@@ -2,7 +2,7 @@
 # EAP based applications with an embedded Derby db.
 # It builds using maven and runs the resulting artifacts on EAP 
 ARG ENTANDO_IMAGE_VERSION
-FROM entando/entando-dependencies-base:$ENTANDO_IMAGE_VERSION AS dependencies
+FROM entando/entando-base-common:$ENTANDO_IMAGE_VERSION AS entando-common-base
 
 FROM openshift/base-centos7
 ARG ENTANDO_VERSION
@@ -38,18 +38,6 @@ ENV ENTANDO_VERSION="$ENTANDO_VERSION" \
     PREPARE_DATA="true" \
     DB_ENVIRONMENT="production" \
     DEPLOYMENTS_DIR="/tomcat/webapps" \
-    ENTANDO_OIDC_ACTIVE="false" \
-    ENTANDO_OIDC_AUTH_LOCATION="http://dummy.com" \
-    ENTANDO_OIDC_TOKEN_LOCATION="http://dummy.com" \
-    ENTANDO_OIDC_CLIENT_ID="dummy" \
-    ENTANDO_OIDC_REDIRECT_BASE_URL="http://dummy.com" \
-    LOGFILEPREFIX="/var/log/entando/engine_" \
-    LOGNAME="/var/log/entando/engine.log" \
-    LOGACTIVEFILEOUTPUT="true" \
-    LOGFILEROTATEPATTERN="/var/log/entando/engine_%i.log.gz" \
-    RESOURCEDISKROOTFOLDER="/entando-data/resources/" \
-    PROTECTEDRESOURCEDISKROOTFOLDER="/entando-data/protected/" \
-    INDEXDISKROOTFOLDER="/tmp/entando-indices" \
     TOMCAT_VERSION="8.5.42" \
     TOMCAT_MAJOR=8 \
     MAVEN_VERSION=3.5.4 \
@@ -58,7 +46,26 @@ ENV ENTANDO_VERSION="$ENTANDO_VERSION" \
     JAVA="java-1.8.0-openjdk java-1.8.0-openjdk-devel" \
     JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8" \
     POM_PATH=.\
-    ENTANDO_COMMON_PATH="/entando-common"
+    ENTANDO_COMMON_PATH="/entando-common" \
+    ENTANDO_OIDC_ACTIVE="false" \
+    ENTANDO_OIDC_AUTH_LOCATION="http://dummy.com" \
+    ENTANDO_OIDC_TOKEN_LOCATION="http://dummy.com" \
+    ENTANDO_OIDC_CLIENT_ID="dummy" \
+    ENTANDO_OIDC_REDIRECT_BASE_URL="http://dummy.com" \
+    ALGO_DEFAULT_KEY="changeit" \
+    KEYCLOAK_ENABLED="false" \
+    KEYCLOAK_AUTHURL="http://dummy.com" \
+    KEYCLOAK_REALM="dummy" \
+    KEYCLOAK_CLIENTID="dummy" \
+    KEYCLOAK_CLIENTSECRET="dummy" \
+    KEYCLOAK_PUBLICCLIENTID="dummy" \
+    LOGFILEPREFIX="/var/log/entando/engine_" \
+    LOGACTIVEFILEOUTPUT="true" \
+    LOGNAME="/var/log/entando/engine.log" \
+    LOGFILEROTATEPATTERN="/var/log/entando/engine_%i.log.gz" \
+    RESOURCEDISKROOTFOLDER="/entando-data/resources/" \
+    PROTECTEDRESOURCEDISKROOTFOLDER="/entando-data/protected/" \
+    INDEXDISKROOTFOLDER="/tmp/entando-indices"
 USER root
 
 # Install Maven, Tomcat, Java
@@ -80,16 +87,16 @@ RUN chown -R 1001:0 $HOME && \
     mkdir -p /var/log/entando && chown -Rf $USERID_TO_USE:0 /var/log/entando && chmod -Rf ug+rw /var/log/entando
 
 
-COPY --chown=1001:0 --from=dependencies /opt/app-root/src/.m2/settings.xml $HOME/.m2/settings.xml
-COPY --chown=1001:0 --from=dependencies /opt/app-root/src/jetty-runner/derby-10.9.1.0.jar /tomcat/lib/
-COPY --chown=1001:0 --from=dependencies /opt/app-root/src/jetty-runner/derbyclient-10.9.1.0.jar /tomcat/lib/
-COPY --chown=1001:0 --from=dependencies /opt/app-root/src/jetty-runner/mysql-connector-java-5.1.44-bin.jar /tomcat/lib/
-COPY --chown=1001:0 --from=dependencies /opt/app-root/src/jetty-runner/postgresql-9.4.1211.jar /tomcat/lib/
-COPY --chown=1001:0 --from=dependencies /opt/app-root/src/jetty-runner /jetty-runner
-COPY --chown=1001:0 --from=dependencies ${ENTANDO_COMMON_PATH} ${ENTANDO_COMMON_PATH}
+COPY --chown=1001:0 --from=entando-common-base /opt/app-root/src/.m2 $HOME/.m2
+COPY --chown=1001:0 --from=entando-common-base /opt/app-root/src/jetty-runner/derby-10.9.1.0.jar /tomcat/lib/
+COPY --chown=1001:0 --from=entando-common-base /opt/app-root/src/jetty-runner/derbyclient-10.9.1.0.jar /tomcat/lib/
+COPY --chown=1001:0 --from=entando-common-base /opt/app-root/src/jetty-runner/mysql-connector-java-5.1.44-bin.jar /tomcat/lib/
+COPY --chown=1001:0 --from=entando-common-base /opt/app-root/src/jetty-runner/postgresql-9.4.1211.jar /tomcat/lib/
+COPY --chown=1001:0 --from=entando-common-base /opt/app-root/src/jetty-runner /jetty-runner
+COPY --chown=1001:0 --from=entando-common-base ${ENTANDO_COMMON_PATH} ${ENTANDO_COMMON_PATH}
 COPY --chown=1001:0 context.xml /tomcat/conf/
 COPY --chown=1001:0 logging.properties /tomcat/conf/
-COPY --chown=1001:0 jstl-1.2.jar /tomcat/lib/
+#COPY --chown=1001:0 jstl-1.2.jar /tomcat/lib/
 RUN localedef -c -f UTF-8 -i en_US en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 # Copy the S2I scripts from the specific language image to $STI_SCRIPTS_PATH
@@ -100,4 +107,4 @@ USER $USERID_TO_USE
 #NB!!! Place the VOLUME declaration AFTER the state (permissions, ownership, content) of the volume has been set
 VOLUME /entando-data
 
-EXPOSE 8080
+EXPOSE 8080 8000

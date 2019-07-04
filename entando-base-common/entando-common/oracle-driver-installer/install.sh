@@ -18,7 +18,9 @@ if [ -n "${ORACLE_REPO_USER}" ] && [ -n "${ORACLE_REPO_PASSWORD}" ] ; then
             fi
             sed -i "s|<!-- ##ORACLE_DRIVER## -->|${DRIVER_XML}|" ${CONFIG_FILE} || { echo "Could not setup Oracle driver in Wildfly"; exit 24; }
         fi
-  #TODO tomcat
-        cp *.jar "/jetty-runner/" || { echo "Could not setup Oracle driver in Jetty"; exit 25; }
+        if [ -d "/tomcat/lib" ] ; then
+            cp *.jar "/tomcat/lib/" || { echo "Could not setup Oracle driver in Tomcat"; exit 25; }
+        fi
+        cp *.jar "/jetty-runner/" || { echo "Could not setup Oracle driver in Jetty"; exit 26; }
     fi
 fi

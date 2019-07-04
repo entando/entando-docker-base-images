@@ -10,4 +10,6 @@ export JAVA_OPTS="-Dentando.servdb.jndi=\"${SERVDB_JNDI}\" \
               -Dentando.portdb.url=\"${PORTDB_URL}\" \
               -Dlogging.level.org.apache.tomcat.util.scan.StandardJarScanner=ERROR"
 echo "Java options: $JAVA_OPTS"
-exec $CATALINA_HOME/bin/catalina.sh run
+export JPDA_ADDRESS=8000
+export JPDA_TRANSPORT=dt_socket
+exec $CATALINA_HOME/bin/catalina.sh jpda run
