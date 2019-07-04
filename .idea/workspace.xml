@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f41cacac-b930-42da-92f9-68b291cc7be5" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build-test-and-push.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entando-base-common/entando-common/install-drivers-into-image.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entando-base-common/entando-common/install-proprietary-drivers.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entando-base-common/entando-common/oracle-driver-installer/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entando-base-common/entando-common/sample-driver-installer/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entando-base-common/entando-common/sample-driver-installer/install.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entando-base-common/entando-common/sample-driver-installer/module.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entando-base-common/entando-common/sample-driver-installer/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entando-base-common/entando-common/save-build-id.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entando-eap71-base/test.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entando-eap71-clustered-base/test.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entando-jetty948-base/test.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entando-wildfly12-base/test.sh" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/entando-eap71-base/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/entando-eap71-base/build.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/entando-eap71-clustered-base/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>../../../common/build-common.sh</find>
+      <find>drivers</find>
+      <find>##DRIVER</find>
+      <find>&lt;!</find>
+      <find>oracle</find>
+      <find>ORACLE</find>
+      <find>start-war</find>
+      <find>entando-de-app</find>
+      <find>echo $(date +%s) &gt; /entando-data-templates/build_id</find>
+      <find>build&gt;</find>
+      <find>init-derby-from-war</find>
+      <find>jee.server</find>
+      <find>appbuilder</find>
+      <find>&gt;derby&lt;</find>
+      <find>eap7</find>
+      <find>dependencies</find>
+      <find>&lt;driver</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>SAMPLE</replace>
+      <replace>../common/build-common.sh</replace>
+      <replace>sample-maven-project</replace>
+      <replace>/entando-common/install-proprietary-drivers.sh</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+      <dir>$PROJECT_DIR$/sample-maven-project</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$/../../spring/spring-security/samples/xml/jaas" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/entando-wildfly12-base/build.sh" />
+        <option value="$PROJECT_DIR$/entando-base-common/jdbc-driver-installer/oracle/.gitignore" />
+        <option value="$PROJECT_DIR$/entando-wildfly12-base/contrib/wildfly-configuration/standalone.xml" />
+        <option value="$PROJECT_DIR$/entando-eap71-base/contrib/wildfly-configuration/standalone-openshift.xml" />
+        <option value="$PROJECT_DIR$/entando-base-common/jdbc-driver-installer/oracle/install.sh" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/install-proprietary-drivers.sh" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/oracle-driver-installer/.gitignore" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/oracle-driver-installer/standalone/configuration/standalone-openshift.xml" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/save-build-id.sh" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/install-drivers-into-image.sh" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/oracle-driver-installer/settings.xml" />
+        <option value="$PROJECT_DIR$/entando-base-common/build.sh" />
+        <option value="$PROJECT_DIR$/entando-wildfly12-base/s2i/bin/run" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/prepare-data.sh" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/start-war-in-jetty.sh" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/init-db-from-war.sh" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/postgresql-driver-installer/pom.xml" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/oracle-driver-installer/pom.xml" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/oracle-driver-installer/module.xml" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/sample-driver-installer/module.xml" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/sample-driver-installer/pom.xml" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/sample-driver-installer/install.sh" />
+        <option value="$PROJECT_DIR$/entando-base-common/Dockerfile" />
+        <option value="$PROJECT_DIR$/entando-wildfly12-base/Dockerfile" />
+        <option value="$PROJECT_DIR$/pull-all.sh" />
+        <option value="$PROJECT_DIR$/push-all.sh" />
+        <option value="$PROJECT_DIR$/rmi-all.sh" />
+        <option value="$PROJECT_DIR$/test-all.sh" />
+        <option value="$PROJECT_DIR$/IMAGES_IN_SEQUENCE" />
+        <option value="$PROJECT_DIR$/build-all.sh" />
+        <option value="$PROJECT_DIR$/build-test-and-push.sh" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/init-derby-from-war.sh" />
+        <option value="$PROJECT_DIR$/entando-wildfly12-base/test.sh" />
+        <option value="$PROJECT_DIR$/sample-maven-project/run-smoke-tests.sh" />
+        <option value="$PROJECT_DIR$/entando-base-common/entando-common/oracle-driver-installer/install.sh" />
+        <option value="$PROJECT_DIR$/sample-maven-project/pom.xml" />
+        <option value="$PROJECT_DIR$/entando-jetty948-base/test.sh" />
+        <option value="$PROJECT_DIR$/entando-eap71-base/test.sh" />
+        <option value="$PROJECT_DIR$/entando-eap71-clustered-base/standalone-openshift.xml" />
+        <option value="$PROJECT_DIR$/entando-eap71-base/build.sh" />
+        <option value="$PROJECT_DIR$/entando-eap71-base/Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="67" />
+    <option name="y" value="25" />
+    <option name="width" value="927" />
+    <option name="height" value="1055" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="entando-docker-base-images" type="b2602c69:ProjectViewProjectNode" />
+              <item name="entando-docker-base-images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="entando-docker-base-images" type="b2602c69:ProjectViewProjectNode" />
+              <item name="entando-docker-base-images" type="462c0819:PsiDirectoryNode" />
+              <item name="entando-eap71-clustered-base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="entando-docker-base-images" type="b2602c69:ProjectViewProjectNode" />
+              <item name="entando-docker-base-images" type="462c0819:PsiDirectoryNode" />
+              <item name="sample-maven-project" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/entando-base-common/entando-common" />
+      <recent name="$PROJECT_DIR$/entando-base-common/jdbc-driver-installer/oracle/standalone/configuration" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/entando-eap71-clustered-base" />
+      <recent name="$PROJECT_DIR$/entando-jetty948-base" />
+      <recent name="$PROJECT_DIR$/entando-eap71-base" />
+      <recent name="$PROJECT_DIR$/entando-base-common/entando-common" />
+      <recent name="$PROJECT_DIR$/entando-base-common/jdbc-driver-installer/oracle/standalone/configuration" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f41cacac-b930-42da-92f9-68b291cc7be5" name="Default" comment="" />
+      <created>1561965907870</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1561965907870</updated>
+      <workItem from="1561965910152" duration="230000" />
+      <workItem from="1561966959315" duration="23104000" />
+      <workItem from="1562055372477" duration="923000" />
+      <workItem from="1562056722874" duration="28000" />
+      <workItem from="1562061138224" duration="1643000" />
+      <workItem from="1562074578339" duration="304000" />
+      <workItem from="1562075633032" duration="391000" />
+      <workItem from="1562076376889" duration="3767000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="30390000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="67" y="32" width="1853" height="1048" extended-state="6" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="5" weight="0.32999444" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3344463" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3295964" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3344463" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3295964" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.25" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.32999444" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/oracle-driver-installer/settings.xml" />
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/oracle-driver-installer/standalone/configuration/standalone-openshift.xml" />
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-dependencies-bootstrap/restore-settings-xml.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-dependencies-bootstrap/inject-maven-docker-build-mirror.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-dependencies-bootstrap/init-dependencies.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-dependencies-bootstrap/determine-branch.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/build.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-wildfly12-base/build.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/translate-jboss-variables.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-wildfly12-base/s2i/bin/run">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/prepare-data.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" selection-start-line="15" selection-end-line="15" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/init-db-from-deployment.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/build-jetty-command.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1422">
+          <caret line="79" column="66" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/install-proprietary-drivers.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="36" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/install-drivers-into-image.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="53" selection-start-line="1" selection-start-column="53" selection-end-line="1" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/start-war-in-jetty.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/init-db-from-war.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="53" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3/lib/maven-model-builder-3.3.9.jar!/org/apache/maven/model/pom-4.0.0.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="82" column="8" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/oracle-driver-installer/module.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="58" selection-start-column="58" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/sample-driver-installer/module.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="62" selection-start-column="62" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/sample-driver-installer/settings-base.xml" />
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/oracle-driver-installer/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/sample-driver-installer/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/sample-driver-installer/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/sample-driver-installer/install.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="553">
+          <caret line="38" column="72" selection-start-line="38" selection-start-column="72" selection-end-line="38" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample-maven-project/run-all-smoke-tests.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="37" selection-start-column="9" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pull-all.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.adoc">
+      <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rmi-all.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-all.sh" />
+    <entry file="file://$PROJECT_DIR$/IMAGES_IN_SEQUENCE">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/push-all.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="45" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build-all.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build-test-and-push.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/init-derby-from-war.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-wildfly12-base/test.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample-maven-project/run-smoke-tests.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/determine-driver.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="19" selection-start-column="19" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-wildfly12-base/contrib/wildfly-configuration/standalone.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="164" column="43" selection-start-line="164" selection-start-column="43" selection-end-line="164" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-base-common/entando-common/oracle-driver-installer/install.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-jetty948-base/test.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-wildfly12-base/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="45" selection-start-line="45" selection-end-line="66" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample-maven-project/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="325" column="47" selection-start-line="325" selection-start-column="43" selection-end-line="325" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-eap71-clustered-base/test.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-eap71-base/test.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="99" selection-start-line="1" selection-start-column="99" selection-end-line="1" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-eap71-base/contrib/wildfly-configuration/standalone-openshift.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="150" selection-start-line="150" selection-end-line="150" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-eap71-clustered-base/standalone-openshift.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="150" column="46" selection-start-line="150" selection-start-column="46" selection-end-line="150" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-eap71-clustered-base/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-eap71-base/build.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entando-eap71-base/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -1,0 +1,7 @@
+<project name="sample-maven-project" default="WAR-build" basedir=".">
+	<description>sample-maven-project - Build file</description>
+	
+	<import file="buildProperties.xml"/>
+	<import file="buildTasks.xml"/>
+	
+</project>
