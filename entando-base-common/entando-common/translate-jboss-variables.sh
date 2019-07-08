@@ -3,11 +3,12 @@ source ${ENTANDO_COMMON_PATH}/env-helper.sh
 export_env_files
 #TODO refactor this to generically iterate through all DB prefixes
 function extract_database_name(){
-  path="$(echo $1 | grep / | cut -d/ -f4-)"
+#support both the standard '/'-delimited and oracle's ':'-delimited urls. Always the last segment
+  path="$(echo $1 |  grep 'jdbc:' | rev | cut -d/ -f1| cut -d: -f1| rev )"
   echo $path
 }
 function extract_database_driver(){
-  path="$(echo $1 | grep / | cut -d: -f2)"
+  path="$(echo $1 | grep 'jdbc:' | cut -d: -f2)"
   echo $path
 }
 #Derive URL from variables compatible with the EAP Image when connecting to a database service
