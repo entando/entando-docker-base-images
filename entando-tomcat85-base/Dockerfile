@@ -65,11 +65,14 @@ ENV ENTANDO_VERSION="$ENTANDO_VERSION" \
     LOGFILEROTATEPATTERN="/var/log/entando/engine_%i.log.gz" \
     RESOURCEDISKROOTFOLDER="/entando-data/resources/" \
     PROTECTEDRESOURCEDISKROOTFOLDER="/entando-data/protected/" \
-    INDEXDISKROOTFOLDER="/tmp/entando-indices"
+    INDEXDISKROOTFOLDER="/tmp/entando-indices" \
+    LC_ALL=en_US.UTF-8
 USER root
 
 # Install Maven, Tomcat, Java
-RUN chown -R 1001:0 $HOME && \
+RUN localedef -c -f UTF-8 -i en_US en_US.UTF-8 && \
+    chmod ug+rw /usr/lib/locale/locale-archive && \
+    chown -R 1001:0 $HOME && \
     INSTALL_PKGS="tar unzip bc which lsof ImageMagick $JAVA" && \
     yum install -y --enablerepo=centosplus $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \

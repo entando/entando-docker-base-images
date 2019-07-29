@@ -55,7 +55,8 @@ ENV PORTDB_USERNAME=agile \
     LOGFILEROTATEPATTERN="/var/log/entando/engine_%i.log.gz" \
     RESOURCEDISKROOTFOLDER="/entando-data/resources/" \
     PROTECTEDRESOURCEDISKROOTFOLDER="/entando-data/protected/" \
-    INDEXDISKROOTFOLDER="/tmp/entando-indices"
+    INDEXDISKROOTFOLDER="/tmp/entando-indices" \
+    LC_ALL=en_US.UTF-8
 
 COPY --chown=27:0 ./mysql /usr/share/container-scripts/mysql
 COPY --chown=27:0 --from=entando-base-common /opt/app-root/src/.m2 $HOME/.m2
@@ -63,7 +64,9 @@ COPY --chown=27:0 --from=entando-base-common /opt/app-root/src/jetty-runner /jet
 COPY --chown=27:0 --from=entando-base-common ${ENTANDO_COMMON_PATH} ${ENTANDO_COMMON_PATH}
 COPY --chown=27:0 ./s2i/bin/ $STI_SCRIPTS_PATH
 COPY test /etc/mysql-test-datasources
-RUN mkdir -p /opt/s2i/destination && chmod -R ug+rw /opt/s2i/destination && chown -R $USERID_TO_USE:0 /opt/s2i/destination && \
+RUN localedef -c -f UTF-8 -i en_US en_US.UTF-8 && \
+    chmod ug+rw /usr/lib/locale/locale-archive && \
+    mkdir -p /opt/s2i/destination && chmod -R ug+rw /opt/s2i/destination && chown -R $USERID_TO_USE:0 /opt/s2i/destination && \
     mkdir -p /entando-data/databases  && chown -Rf $USERID_TO_USE:0 /entando-data/ && chmod -Rf ug+rw /entando-data/ && \
     mkdir -p /entando-data-templates/databases  && chown -Rf $USERID_TO_USE:0 /entando-data-templates/ && chmod -Rf ug+rw /entando-data-templates/ && \
     mkdir -p /var/log/entando && chown -Rf $USERID_TO_USE:0 /var/log/entando && chmod -Rf ug+rw /var/log/entando
