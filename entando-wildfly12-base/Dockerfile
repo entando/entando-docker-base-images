@@ -64,7 +64,8 @@ ENV PORTDB_NONXA="true" \
     RESOURCEDISKROOTFOLDER="/entando-data/resources/" \
     PROTECTEDRESOURCEDISKROOTFOLDER="/entando-data/protected/" \
     INDEXDISKROOTFOLDER="/tmp/entando-indices"
-RUN mkdir -p /entando-data/databases  && chown -Rf $USERID_TO_USE:0 /entando-data/ && chmod -Rf ug+rw /entando-data/ && \
+RUN chmod ug+rw /usr/lib/locale/locale-archive && \
+    mkdir -p /entando-data/databases  && chown -Rf $USERID_TO_USE:0 /entando-data/ && chmod -Rf ug+rw /entando-data/ && \
     mkdir -p /entando-data-templates/databases  && chown -Rf $USERID_TO_USE:0 /entando-data-templates/ && chmod -Rf ug+rw /entando-data-templates/ && \
     mkdir -p /var/log/entando && chown -Rf $USERID_TO_USE:0 /var/log/entando && chmod -Rf ug+rw /var/log/entando
 
