@@ -16,7 +16,7 @@ mvn clean package -P${JEE_SERVER} -P${DBMS} docker:start -Doracle.repo.user=${OR
 #mvn -P${JEE_SERVER} -P${DBMS} docker:start || { echo "Maven build failed"; exit 1; }
 docker run --rm --network=${APPLICATION_NAME}-network \
     -e ENTANDO_APPBUILDER_URL=http://appbuilder:5000  \
-    entando/entando-smoke-tests:5.2.0-SNAPSHOT mvn verify -Dtest=org.entando.selenium.smoketests.STAddTestUserTest \
+    entando/entando-smoke-tests:5.2.0 mvn verify -Dtest=org.entando.selenium.smoketests.STAddTestUserTest \
     || { echo "AddTestUser smoke test failed"; exit 2; }
 #mvn -P${JEE_SERVER} -P${DBMS} docker:stop || { echo "Stopping containers from Maven failed"; exit 3; }
 #mvn -P${JEE_SERVER} -P${DBMS} docker:start  -Doracle.repo.user=${ORACLE_REPO_USER} && \
@@ -24,7 +24,7 @@ docker run --rm --network=${APPLICATION_NAME}-network \
 docker run --rm --network=${APPLICATION_NAME}-network \
     -e ENTANDO_ENGINE_URL=http://${APPLICATION_NAME}-engine:8080/${APPLICATION_NAME} \
     -e ENTANDO_APPBUILDER_URL=http://appbuilder:5000  \
-    entando/entando-smoke-tests:5.2.0-SNAPSHOT mvn verify -Dtest=org.entando.selenium.smoketests.STLoginWithTestUserTest \
+    entando/entando-smoke-tests:5.2.0 mvn verify -Dtest=org.entando.selenium.smoketests.STLoginWithTestUserTest \
     || { echo "LoginWithTestUser smoke test failed"; exit 5; }
 
 #post-test cleanup
