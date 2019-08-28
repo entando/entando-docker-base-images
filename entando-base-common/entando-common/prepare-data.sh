@@ -7,12 +7,19 @@ function extract_resources(){
     jar xf ${WAR}
     mkdir -p /entando-data/resources/ > /dev/null 2>&1
     mkdir -p /entando-data/protected/ > /dev/null 2>&1
-    cp resources/* /entando-data/resources/ -rf
-    cp protected/* /entando-data/protected/ -rf
+    #TODO reevaluate if we will ever need this once Git is in place
+    if [ "$OVEWRITE_RESOURCES_FROM_WAR" = "true" ]; then
+        cp resources/* /entando-data/resources/ -rf
+        cp protected/* /entando-data/protected/ -rf
+    else
+        cp resources/* /entando-data/resources/ -rn
+        cp protected/* /entando-data/protected/ -rn
+    fi
   done
   popd
   rm -Rf /tmp/exploded-war
 }
+
 ${ENTANDO_COMMON_PATH}/install-proprietary-drivers.sh
 NEW_BUILD_ID="false"
 if [ ! -f /entando-data/build_id ] ||  [ "$(cat /entando-data-templates/build_id)" -gt "$(cat /entando-data/build_id)" ]; then
@@ -38,8 +45,6 @@ if [ "$PREPARE_DATA" = "true" ]; then
   if [ "$NEW_BUILD_ID" = "true" ]; then
     echo "Entando resource reset requested. Replacing existing resources with resources copied from Maven project"
     cp /entando-data-templates/build_id /entando-data/build_id -f
-    rm -Rf /entando-data/protected/* > /dev/null 2>&1
-    rm -Rf /entando-data/resources/* > /dev/null 2>&1
     extract_resources
    fi
 elif [ !  -d /entando-data/resources ]; then

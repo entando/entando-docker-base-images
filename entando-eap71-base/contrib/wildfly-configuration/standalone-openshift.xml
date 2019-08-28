@@ -543,6 +543,7 @@
                 <!-- ##HTTPS_CONNECTOR## -->
         <host name="default-host" alias="localhost">
                     <location name="/" handler="welcome-content"/>
+            <location name="##RESOURCEROOTURL##" handler="cmscontent"/>
                     <!-- ##ACCESS_LOG_VALVE## -->
           <filter-ref name="server-header"/>
           <filter-ref name="x-powered-by-header"/>
@@ -556,6 +557,7 @@
       </servlet-container>
       <handlers>
                 <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>
+          <file name="cmscontent" path="/entando-data/resources"/>
       </handlers>
       <filters>
                 <response-header name="server-header" header-name="Server" header-value="JBoss-EAP/7"/>

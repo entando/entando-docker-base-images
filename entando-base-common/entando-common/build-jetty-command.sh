@@ -46,6 +46,7 @@ if [ -z "$WAR_FILE" ]; then
     fi
   fi
 fi
+#TODO check if this is still necessary - it is in translate-jboss-variables.sh
 if [ -z "$ENTANDO_WEB_CONTEXT" ]; then
   ENTANDO_WEB_CONTEXT="${WAR_FILE%.war}"
   while [[ "$ENTANDO_WEB_CONTEXT" == *"/"* ]] ; do
@@ -81,6 +82,7 @@ export JETTY_COMMAND="java -Ddb.startup.check=true \
     -DportDataSourceClassName=$($(dirname ${BASH_SOURCE[0]})/determine-driver.sh $PORTDB_DRIVER) \
     -DservDataSourceClassName=$($(dirname ${BASH_SOURCE[0]})/determine-driver.sh $SERVDB_DRIVER) \
     -DlogFilePrefix=/tmp/entando-logs \
+    -DlogName=/tmp/entando-logs/entando.log \
     -DresourceRootURL=${ENTANDO_WEB_CONTEXT}/resources/ \
     -DprotectedResourceRootURL=${ENTANDO_WEB_CONTEXT}/protected/ \
     -DresourceDiskRootFolder=/entando-data/resources/ \

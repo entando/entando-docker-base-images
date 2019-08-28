@@ -59,7 +59,7 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
   # Append user-supplied arguments (CLOUD-412)
 
   # Entando: override filter properties
-  MAVEN_ARGS="$MAVEN_ARGS --batch-mode --settings $HOME/.m2/settings-base.xml\
+  MAVEN_ARGS="$MAVEN_ARGS --batch-mode --settings $HOME/.m2/settings.xml\
                 -Dprofile.portDataSourceClassName=$PORTDATASOURCECLASSNAME \
                 -Dprofile.servDataSourceClassName=$SERVDATASOURCECLASSNAME \
                 -Djboss=jboss \

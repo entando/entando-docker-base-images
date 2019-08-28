@@ -9,6 +9,7 @@ ENV ENTANDO_VERSION="$ENTANDO_VERSION" \
 COPY --chown=1001:0 ./entando-dependencies-bootstrap "${ENTANDO_COMMON_PATH}"
 USER $USERID_TO_USE
 COPY --chown=1001:0 ./settings.xml $HOME/.m2/settings.xml
+RUN cd $ENTANDO_COMMON_PATH/sample-driver-installer/ && ./install.sh && chmod -Rf ug+rw  $HOME/.m2
 
 ENV PORTDB_NONXA="true" \
     PORTDB_JTA="false" \
@@ -36,7 +37,6 @@ COPY --chown=1001:0 ./entando-common "$ENTANDO_COMMON_PATH"
 COPY --chown=1001:0 ./jetty-runner $HOME/jetty-runner
 COPY --chown=1001:0 ./wfmodules $HOME/wildfly/modules
 USER $USERID_TO_USE
-RUN cd $ENTANDO_COMMON_PATH/sample-driver-installer/ && ./install.sh && chmod -Rf ug+rw  $HOME/.m2
 
 
 #Now we have all the dependencies sitting at $HOME./m2/settings

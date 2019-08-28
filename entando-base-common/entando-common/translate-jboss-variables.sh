@@ -33,8 +33,30 @@ if [ -n "$SERVDB_URL" ]; then
 fi
 #Derive Entando's confusing datasourceclassname variable
 if [ -n "$PORTDB_DRIVER" ]; then
-    export PORTDATASOURCECLASSNAME=$($(dirname ${BASH_SOURCE[0]})/determine-driver.sh ${PORTDB_DRIVER})
+  export PORTDATASOURCECLASSNAME=$($(dirname ${BASH_SOURCE[0]})/determine-driver.sh ${PORTDB_DRIVER})
 fi
 if [ -n "$SERVDB_DRIVER" ]; then
-    export SERVDATASOURCECLASSNAME=$($(dirname ${BASH_SOURCE[0]})/determine-driver.sh ${SERVDB_DRIVER})
+  export SERVDATASOURCECLASSNAME=$($(dirname ${BASH_SOURCE[0]})/determine-driver.sh ${SERVDB_DRIVER})
+fi
+if [ -z "$ENTANDO_WEB_CONTEXT" ]; then
+  WARS="$(dir $DEPLOYMENTS_DIR/*.war)"
+  if [ ${#WARS[@]}  -gt  0 ] ; then
+
+    WAR_FILE=${WARS[0]}
+    #Strip .war
+    WEB_CONTEXT="${WAR_FILE%.war}"
+    while [[ "$WEB_CONTEXT" == *"/"* ]] ; do
+    #Strip all segments that still contain a /
+      WEB_CONTEXT=${WEB_CONTEXT#*/}
+    done
+    #Export context
+    export ENTANDO_WEB_CONTEXT="/${WEB_CONTEXT}"
+  fi
+fi
+#RESOURCEROOTURL Could be anything really as long as it is not /resources which would clash with files in the WAR
+#RESOURCEROOTURL is used both by Entando as well as the Wildfly/EAP standalone.xml to expose the resource handler
+if [[ "$ENTANDO_WEB_CONTEXT" = "/" ]] ; then
+  export RESOURCEROOTURL="/cmsresources/"
+else
+  export RESOURCEROOTURL="${ENTANDO_WEB_CONTEXT}/cmsresources/"
 fi

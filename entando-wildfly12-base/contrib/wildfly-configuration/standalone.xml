@@ -489,7 +489,8 @@
       <server name="default-server">
                 <http-listener name="default" socket-binding="http" redirect-socket="https"/>
         <host name="default-host" alias="localhost">
-                    <location name="/" handler="welcome-content"/>
+          <location name="##RESOURCEROOTURL##" handler="cmscontent"/>
+          <location name="/" handler="welcome-content"/>
           <filter-ref name="server-header"/>
           <filter-ref name="x-powered-by-header"/>
           <http-invoker security-realm="ApplicationRealm"/>
@@ -500,7 +501,8 @@
         <websockets/>
       </servlet-container>
       <handlers>
-                <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>
+          <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>
+          <file name="cmscontent" path="/entando-data/resources"/>
       </handlers>
       <filters>
         <response-header name="server-header" header-name="Server" header-value="WildFly/11"/>

@@ -1,5 +1,5 @@
 #!/bin/bash
-# insert settings for mirrors/repository managers into settings-base.xml if supplied
+# insert settings for mirrors/repository managers into settings.xml if supplied
 function configure_mirrors() {
   if [ -n "$MAVEN_MIRROR_URL" ]; then
     xml="    <mirror>\
@@ -27,7 +27,7 @@ if [ -d  $LOCAL_SOURCE_DIR/src/main/db/tar ] && ! [ -d  $LOCAL_SOURCE_DIR/src/ma
     ant PG-db-full-update-tar -Dpostgres.bin.path=/opt/rh/rh-postgresql95/root/usr/bin/
     pg_ctl stop -D /$HOME/data/userdata
 else
-    MAVEN_ARGS="clean package -B -DskipTests --batch-mode --settings $HOME/.m2/settings-base.xml \
+    MAVEN_ARGS="clean package -B -DskipTests --batch-mode --settings $HOME/.m2/settings.xml \
                 -Dprofile.portDataSourceClassName=org.postgresql.Driver \
                 -Dprofile.servDataSourceClassName=org.postgresql.Driver \
                 -Djboss=jboss \

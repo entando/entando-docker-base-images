@@ -158,7 +158,7 @@ function ismgmtup() {
   return 1
 }
 
-# insert settings for HTTP proxy into settings-base.xml if supplied
+# insert settings for HTTP proxy into settings.xml if supplied
 function configure_proxy() {
   if [ -n "$HTTP_PROXY_HOST" -a -n "$HTTP_PROXY_PORT" ]; then
     xml="<proxy>\
@@ -182,7 +182,7 @@ function configure_proxy() {
   fi
 }
 
-# insert settings for mirrors/repository managers into settings-base.xml if supplied
+# insert settings for mirrors/repository managers into settings.xml if supplied
 function configure_mirrors() {
   if [ -n "$MAVEN_MIRROR_URL" ]; then
     xml="    <mirror>\
@@ -269,7 +269,7 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
   # Can be relative to application root
   # Can be global to image
   if [ -z "$MAVEN_SETTINGS" ]; then
-    export MAVEN_ARGS="$MAVEN_ARGS -s $HOME/.m2/settings-base.xml"
+    export MAVEN_ARGS="$MAVEN_ARGS -s $HOME/.m2/settings.xml"
   else
     if [[ "$MAVEN_SETTINGS" = /* ]]; then
        [ ! -e "$MAVEN_SETTINGS" ] && echo "Specified settings file does not exist in the image. [$MAVEN_SETTINGS]" && exit 1
@@ -284,7 +284,7 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
   if [ -n "$MAVEN_ARGS_APPEND" ]; then
     export MAVEN_ARGS="$MAVEN_ARGS $MAVEN_ARGS_APPEND"
   fi
-  MAVEN_ARGS="$MAVEN_ARGS --batch-mode --settings $HOME/.m2/settings-base.xml \
+  MAVEN_ARGS="$MAVEN_ARGS --batch-mode --settings $HOME/.m2/settings.xml \
                 -Dprofile.portDataSourceClassName=$PORTDATASOURCECLASSNAME \
                 -Dprofile.servDataSourceClassName=$SERVDATASOURCECLASSNAME \
                 -Djboss=jboss \

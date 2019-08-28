@@ -40,7 +40,7 @@ if [ -f "$LOCAL_SOURCE_DIR/$POM_PATH/pom.xml" ]; then
   fi
 
   pushd $LOCAL_SOURCE_DIR/$POM_PATH &> /dev/null
-  MAVEN_ARGS="$MAVEN_ARGS --batch-mode --settings $HOME/.m2/settings-base.xml\
+  MAVEN_ARGS="$MAVEN_ARGS --batch-mode --settings $HOME/.m2/settings.xml\
                 -Dprofile.portDataSourceClassName=$PORTDATASOURCECLASSNAME \
                 -Dprofile.servDataSourceClassName=$SERVDATASOURCECLASSNAME \
                 -Djboss=jboss \
