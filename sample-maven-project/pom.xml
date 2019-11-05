@@ -684,7 +684,7 @@
                             </run>
                         </image>
                         <image>
-                            <name>entando/appbuilder-with-digital-exchange:${entando.version}</name>
+                            <name>entando/appbuilder-with-digital-exchange:5.2.0</name>
                             <run>
                                 <skip>${skipAppBuilderImage}</skip>
                                 <network>
