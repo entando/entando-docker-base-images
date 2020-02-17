@@ -20,7 +20,6 @@ function extract_resources(){
   rm -Rf /tmp/exploded-war
 }
 
-${ENTANDO_COMMON_PATH}/install-proprietary-drivers.sh
 NEW_BUILD_ID="false"
 if [ ! -f /entando-data/build_id ] ||  [ "$(cat /entando-data-templates/build_id)" -gt "$(cat /entando-data/build_id)" ]; then
   NEW_BUILD_ID="true"
