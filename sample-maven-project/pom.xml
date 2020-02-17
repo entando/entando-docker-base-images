@@ -434,7 +434,7 @@
                 <servdb.driverClassName>org.postgresql.Driver</servdb.driverClassName>
 
                 <!-- No DB work required from the server image. Just set the build_id -->
-                <server.init.command>/entando-common/install-proprietary-drivers.sh</server.init.command>
+                <server.init.command>/entando-common/save-build-id.sh</server.init.command>
             </properties>
         </profile>
         <profile>
@@ -463,7 +463,7 @@
                 <servdb.driverClassName>com.mysql.jdbc.Driver</servdb.driverClassName>
 
                 <!-- No DB work required from the server image. Just set the build_id -->
-                <server.init.command>/entando-common/install-proprietary-drivers.sh</server.init.command>
+                <server.init.command>/entando-common/save-build-id.sh</server.init.command>
             </properties>
         </profile>
         <profile>
