@@ -148,7 +148,9 @@
           <driver name="postgresql" module="org.postgresql">
             <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
           </driver>
-            <!-- ##ORACLE_DRIVER## -->
+            <driver name="oracle" module="com.oracle.jdbc">
+                <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+            </driver>
                     <!-- ##DRIVERS## -->
         </drivers>
       </datasources>
