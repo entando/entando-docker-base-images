@@ -93,6 +93,7 @@ RUN localedef -c -f UTF-8 -i en_US en_US.UTF-8 && \
 COPY --chown=1001:0 --from=entando-common-base /opt/app-root/src/.m2 $HOME/.m2
 COPY --chown=1001:0 --from=entando-common-base /opt/app-root/src/jetty-runner/derby-10.9.1.0.jar /tomcat/lib/
 COPY --chown=1001:0 --from=entando-common-base /opt/app-root/src/jetty-runner/derbyclient-10.9.1.0.jar /tomcat/lib/
+COPY --chown=1001:0 --from=entando-common-base /opt/app-root/src/jetty-runner/ojdbc8-19.3.0.0.jar /tomcat/lib/
 COPY --chown=1001:0 --from=entando-common-base /opt/app-root/src/jetty-runner/mysql-connector-java-5.1.44-bin.jar /tomcat/lib/
 COPY --chown=1001:0 --from=entando-common-base /opt/app-root/src/jetty-runner/postgresql-9.4.1211.jar /tomcat/lib/
 COPY --chown=1001:0 --from=entando-common-base /opt/app-root/src/jetty-runner /jetty-runner

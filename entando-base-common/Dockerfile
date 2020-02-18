@@ -9,7 +9,7 @@ ENV ENTANDO_VERSION="$ENTANDO_VERSION" \
 COPY --chown=1001:0 ./entando-dependencies-bootstrap "${ENTANDO_COMMON_PATH}"
 USER $USERID_TO_USE
 COPY --chown=1001:0 ./settings.xml $HOME/.m2/settings.xml
-RUN cd $ENTANDO_COMMON_PATH/sample-driver-installer/ && ./install.sh && chmod -Rf ug+rw  $HOME/.m2
+#RUN cd $ENTANDO_COMMON_PATH/sample-driver-installer/ && ./install.sh && chmod -Rf ug+rw  $HOME/.m2
 
 ENV PORTDB_NONXA="true" \
     PORTDB_JTA="false" \

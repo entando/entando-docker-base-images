@@ -170,6 +170,9 @@
           <driver name="derby" module="org.apache.derby.jdbc">
             <xa-datasource-class>org.apache.derby.jdbc.EmbeddedXADataSource40</xa-datasource-class>
           </driver>
+          <driver name="oracle" module="com.oracle.jdbc">
+            <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+          </driver>
           <driver name="postgresql" module="org.postgresql.jdbc">
             <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
           </driver>

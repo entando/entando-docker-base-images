@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 source $(dirname ${BASH_SOURCE[0]})/translate-jboss-variables.sh
-${ENTANDO_COMMON_PATH}/install-proprietary-drivers.sh
 source $(dirname ${BASH_SOURCE[0]})/build-jetty-command.sh "$@"
 $JETTY_COMMAND  &> db_creation.log &
 export JETTY_PID=$(echo $!)
