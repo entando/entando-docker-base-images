@@ -572,6 +572,11 @@
                     <!-- ##ACCESS_LOG_VALVE## -->
                     <filter-ref name="server-header"/>
                     <filter-ref name="x-powered-by-header"/>
+                    <filter-ref name="x-frame-options"/>
+                    <filter-ref name="x-xss-protection"/>
+                    <filter-ref name="x-content-type-options"/>
+                    <filter-ref name="content-security-policy"/>
+                    <filter-ref name="strict-transport-security"/>
                     <http-invoker security-realm="ApplicationRealm"/>
                 </host>
             </server>
@@ -586,6 +591,11 @@
             <filters>
                 <response-header name="server-header" header-name="Server" header-value="JBoss-EAP/7"/>
                 <response-header name="x-powered-by-header" header-name="X-Powered-By" header-value="Undertow/1"/>
+                <response-header name="x-frame-options" header-name="X-Frame-Options" header-value="SAMEORIGIN"/>
+                <response-header name="x-xss-protection" header-name="X-XSS-Protection" header-value="1; mode=block"/>
+                <response-header name="x-content-type-options" header-name="X-Content-Type-Options" header-value="nosniff"/>
+                <response-header name="content-security-policy" header-name="Content-Security-Policy" header-value="script-src 'unsafe-inline' * ;"/>
+                <response-header name="strict-transport-security" header-name="Strict-Transport-Security" header-value="max-age=31536000; includeSubDomains;"/>
             </filters>
             <!-- ##HTTP_APPLICATION_SECURITY_DOMAINS## -->
         </subsystem>

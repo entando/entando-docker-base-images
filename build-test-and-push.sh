@@ -2,7 +2,7 @@
 #Approach followed:
 #We fail and halt the entire build if one of the docker builds failed, or pushing the images failed. These are serious problems that need to be fixed, as one image could depend on another.
 #We don't halt the build if one of the tests failed, but we do push the images of tests that succeeded. We do fail the build though.
-export VERSION=${1:-6.0.0-SNAPSHOT}
+export VERSION=${1:-6.1.1}
 pushd entando-base-common
 ./build.sh ${VERSION} || { echo "Exiting build for entando-base-common because of result code $?"; exit 1; }
 popd
