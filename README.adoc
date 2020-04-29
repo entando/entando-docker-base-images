@@ -2,16 +2,16 @@
 = Steps for modifying and building the base images
 
 Please note that this project is not being built on Jenkins X yet. We do have a build
-setup on our legacy Jenkins, but it does manage versions correctly. For this
+setup on our legacy Jenkins, but it does not manage versions correctly. For this
 reason we still have to build this project manually. This will change once we have
 created a pipeline for these project in Jenkins X.
 
-1. Clone this repository locally
+1. Clone this repository locally: `git clone git@github.com:entando/entando-docker-base-images.git`
 2. Create a new branch for your pull request: `git checkout -b my-pr`
 3. Make changes to the files in the images you want to modify
-4. Commit your changes to a branch: `git commit -a -m "your message"`
+4. Commit your changes to the branch: `git commit -a -m "your message"`
 5. Tag your changes with the new version number: `git tag v6.2.342`
-6. Push your tagged changes, create a PR and wait for approaval `git push origin my-pr --tags`
+6. Push your tagged changes, create a PR and wait for approval `git push origin my-pr --tags`
 7. After PR approval and the merge, checkout master locally: `git checkout origin master`
 8. Pull the latest changes `git pull origin master`
 9. Log into Docker Hub with a user that has read/write access to the 'entando' organization
