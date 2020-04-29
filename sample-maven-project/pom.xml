@@ -553,7 +553,7 @@
                             <alias>${project.artifactId}-dbms</alias>
                             <build>
                                 <skip>${skipDatabaseImage}</skip>
-                                <from>entando/${db.base.image}:${entando.version}</from>
+                                <from>entando/${db.base.image}::${base.image.version}</from>
                                 <assembly>
                                     <descriptorRef>artifact</descriptorRef>
                                     <targetDir>/tmp</targetDir>
@@ -609,7 +609,7 @@
                             <name>entando/${project.artifactId}-${jee.server}:${project.version}</name>
                             <alias>${project.artifactId}-engine</alias>
                             <build>
-                                <from>entando/${server.base.image}:6.1.1</from>
+                                <from>entando/${server.base.image}:${base.image.version}</from>
                                 <skip>${skipServerImage}</skip>
                                 <assembly>
                                     <descriptorRef>artifact</descriptorRef>

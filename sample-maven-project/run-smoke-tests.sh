@@ -3,6 +3,7 @@
 APPLICATION_NAME="sample-maven-project"
 JEE_SERVER=${1:-eap}
 DBMS=${2:-mysql}
+BASE_IMAGE_VERSION=${VERSION:-6.2.0}
 
 echo "Running smoke tests for ${APPLICATION_NAME} using $JEE_SERVER and $DBMS"
 
@@ -12,6 +13,7 @@ docker volume rm ${APPLICATION_NAME}-entando-data ${APPLICATION_NAME}-entando-db
 
 #run full tests
 mvn clean package -P${JEE_SERVER} -P${DBMS} docker:start -Doracle.repo.user=${ORACLE_REPO_USER} \
+        -Dbase.image.version=${BASE_IMAGE_VERSION} \
         -Doracle.repo.password=${ORACLE_REPO_PASSWORD} || { echo "Maven build failed"; exit 1; }
 #mvn -P${JEE_SERVER} -P${DBMS} docker:start || { echo "Maven build failed"; exit 1; }
 docker run --rm --network=${APPLICATION_NAME}-network \
