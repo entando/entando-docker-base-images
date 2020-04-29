@@ -7,7 +7,7 @@ reason we still have to build this project manually. This will change once we ha
 created a pipeline for these project in Jenkins X.
 
 1. Clone this repository locally
-2. Create a new branch: `git checkout -b my-pr`
+2. Create a new branch for your pull request: `git checkout -b my-pr`
 3. Make changes to the files in the images you want to modify
 4. Commit your changes to a branch: `git commit -a -m "your message"`
 5. Tag your changes with the new version number: `git tag v6.2.342`
@@ -15,7 +15,7 @@ created a pipeline for these project in Jenkins X.
 7. After PR approval and the merge, checkout master locally: `git checkout origin master`
 8. Pull the latest changes `git pull origin master`
 9. Log into Docker Hub with a user that has read/write access to the 'entando' organization
-10. Build and push from the commandline: `./build-test-and-push.sh 6.2.342`
+10. Build and push with the correct version number from the commandline: `./build-test-and-push.sh 6.2.342`
 
 Tips:
 

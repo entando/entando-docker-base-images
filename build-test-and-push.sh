@@ -20,7 +20,7 @@ for D in ${IMAGES_IN_SEQUENCE[@]}; do
     echo "########## Testing $D ###########"
     if ./test.sh ${VERSION} > "${D}-test.log" ; then
         echo "Test for $D succeeded, pushing to Docker Hub"
-        #docker push entando/$D:${VERSION} || exit 1
+        docker push entando/$D:${VERSION} || exit 1
     else
         FAILED_TESTS="${FAILED_TESTS} ${D}"
         echo "Test for $D failed, not pushing to Docker Hub"
