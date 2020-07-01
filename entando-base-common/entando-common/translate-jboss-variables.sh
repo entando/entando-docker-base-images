@@ -34,9 +34,11 @@ fi
 #Derive Entando's confusing datasourceclassname variable
 if [ -n "$PORTDB_DRIVER" ]; then
   export PORTDATASOURCECLASSNAME=$($(dirname ${BASH_SOURCE[0]})/determine-driver.sh ${PORTDB_DRIVER})
+  export PORTDB_SQL_CHECK=$($(dirname ${BASH_SOURCE[0]})/determine-driver.sh ${PORTDB_DRIVER})
 fi
 if [ -n "$SERVDB_DRIVER" ]; then
   export SERVDATASOURCECLASSNAME=$($(dirname ${BASH_SOURCE[0]})/determine-driver.sh ${SERVDB_DRIVER})
+  export SERVDB_SQL_CHECK=$($(dirname ${BASH_SOURCE[0]})/determine-driver.sh ${$SERVDB_DRIVER})
 fi
 if [ -z "$ENTANDO_WEB_CONTEXT" ]; then
   WARS="$(dir $DEPLOYMENTS_DIR/*.war)"

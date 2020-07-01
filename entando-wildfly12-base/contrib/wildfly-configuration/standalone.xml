@@ -150,6 +150,14 @@
             <user-name>${env.PORTDB_USERNAME}</user-name>
             <password>${env.PORTDB_PASSWORD}</password>
           </security>
+          <validation>
+            <check-valid-connection-sql>${env.PORTDB_SQL_CHECK}</check-valid-connection-sql>
+            <background-validation>true</background-validation>
+            <background-validation-millis>60000</background-validation-millis>
+          </validation>
+          <pool>
+            <flush-strategy>IdleConnections</flush-strategy>
+          </pool>
         </datasource>
         <datasource jndi-name="${env.SERVDB_JNDI}" enabled="true" use-java-context="true" pool-name="entandoDbServDataSource" use-ccm="true">
           <connection-url>${env.SERVDB_URL}</connection-url>
@@ -158,6 +166,14 @@
             <user-name>${env.SERVDB_USERNAME}</user-name>
             <password>${env.SERVDB_PASSWORD}</password>
           </security>
+            <validation>
+                <check-valid-connection-sql>${env.SERVDB_SQL_CHECK}</check-valid-connection-sql>
+                <background-validation>true</background-validation>
+                <background-validation-millis>60000</background-validation-millis>
+            </validation>
+            <pool>
+                <flush-strategy>IdleConnections</flush-strategy>
+            </pool>
         </datasource>
         <drivers>
           <!-- ##ORACLE_DRIVER## -->
