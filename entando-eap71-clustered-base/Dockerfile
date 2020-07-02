@@ -16,19 +16,27 @@ COPY --chown=185:0 ./standalone-openshift.xml /opt/eap/standalone/configuration
 
 ENV PORTDB_NONXA="true" \
     PORTDB_JTA="false" \
-    PORTDB_URL="" \
+    PORTDB_URL="jdbc:derby:/entando-data/databases/entandoPort;create=true" \
     PORTDB_JNDI="java:jboss/datasources/entandoPortDataSource" \
-    PORTDB_DRIVER="postgresql" \
+    PORTDB_DRIVER="derby" \
     PORTDB_USERNAME="agile" \
     PORTDB_PASSWORD="agile" \
-    PORTDB_SERVICE_HOST="postgresql" \
-    PORTDB_SERVICE_PORT="5432" \
+    PORTDB_SERVICE_HOST="dummy" \
+    PORTDB_SERVICE_PORT="1234" \
+    PORTDB_BACKGROUND_VALIDATION="true" \
+    PORTDB_EXCEPTION_SORTER="org.jboss.jca.adapters.jdbc.extensions.novendor.NullExceptionSorter" \
+    PORTDB_BACKGROUND_VALIDATION_MILLIS="60000" \
+    PORTDB_CONNECTION_CHECKER="org.jboss.jca.adapters.jdbc.extensions.novendor.NullValidConnectionChecker" \
     SERVDB_NONXA="true" \
     SERVDB_JTA="false" \
-    SERVDB_URL="" \
+    SERVDB_URL="jdbc:derby:/entando-data/databases/entandoServ;create=true" \
     SERVDB_JNDI="java:jboss/datasources/entandoServDataSource" \
-    SERVDB_DRIVER="postgresql" \
+    SERVDB_DRIVER="derby" \
     SERVDB_USERNAME="agile" \
     SERVDB_PASSWORD="agile" \
-    SERVDB_SERVICE_HOST="postgresql" \
-    SERVDB_SERVICE_PORT="5432"
+    SERVDB_SERVICE_HOST="dummy" \
+    SERVDB_SERVICE_PORT="1234" \
+    SERVDB_BACKGROUND_VALIDATION="true" \
+    SERVDB_BACKGROUND_VALIDATION_MILLIS="60000" \
+    SERVDB_CONNECTION_CHECKER="org.jboss.jca.adapters.jdbc.extensions.novendor.NullValidConnectionChecker" \
+    SERVDB_EXCEPTION_SORTER="org.jboss.jca.adapters.jdbc.extensions.novendor.NullExceptionSorter"

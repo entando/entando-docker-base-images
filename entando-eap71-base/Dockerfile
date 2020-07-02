@@ -5,7 +5,7 @@ ARG ENTANDO_IMAGE_VERSION
 FROM entando/entando-base-common:$ENTANDO_IMAGE_VERSION AS entando-common-base
 
 #FROM registry.access.redhat.com/jboss-eap-7/eap71-openshift:1.3
-FROM registry.connect.redhat.com/entando/entando-eap71-openshift-imagick:latest
+FROM registry.redhat.io/jboss-eap-7/eap71-openshift:latest
 ARG ENTANDO_VERSION
 ARG MAVEN_MIRROR_FOR_DOCKER_BUILDS
 LABEL maintainer="Ampie Barnard <a.barnard@entando.com>" \
