@@ -32,6 +32,8 @@ ENV PORTDB_NONXA="true" \
     PORTDB_PASSWORD="agile" \
     PORTDB_SERVICE_HOST="dummy" \
     PORTDB_SERVICE_PORT="1527" \
+    PORTDB_CONNECTION_CHECKER="org.jboss.jca.adapters.jdbc.extensions.novendor.NullValidConnectionChecker" \
+    PORTDB_EXCEPTION_SORTER="org.jboss.jca.adapters.jdbc.extensions.novendor.NullExceptionSorter" \
     SERVDB_NONXA="true" \
     SERVDB_JTA="false" \
     SERVDB_URL="jdbc:derby:/entando-data/databases/entandoServ;create=true" \
@@ -41,6 +43,8 @@ ENV PORTDB_NONXA="true" \
     SERVDB_PASSWORD="agile" \
     SERVDB_SERVICE_HOST="dummy" \
     SERVDB_SERVICE_PORT="1527" \
+    SERVDB_CONNECTION_CHECKER="org.jboss.jca.adapters.jdbc.extensions.novendor.NullValidConnectionChecker" \
+    SERVDB_EXCEPTION_SORTER="org.jboss.jca.adapters.jdbc.extensions.novendor.NullExceptionSorter" \
     PREPARE_DATA="true" \
     DB_ENVIRONMENT="production" \
     JBOSS_HOME="/wildfly/" \
