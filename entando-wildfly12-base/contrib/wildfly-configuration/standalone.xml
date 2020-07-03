@@ -151,8 +151,8 @@
             <password>${env.PORTDB_PASSWORD}</password>
           </security>
           <validation>
-            <valid-connection-checker>${env.PORTDB_CONNECTION_CHECKER}</valid-connection-checker>
-            <exception-sorter>${env.PORTDB_EXCEPTION_SORTER}</exception-sorter>
+            <valid-connection-checker class-name="${env.PORTDB_CONNECTION_CHECKER}"/>
+            <exception-sorter class-name="${env.PORTDB_EXCEPTION_SORTER}"/>
             <background-validation>true</background-validation>
             <background-validation-millis>60000</background-validation-millis>
           </validation>
@@ -168,8 +168,8 @@
             <password>${env.SERVDB_PASSWORD}</password>
           </security>
           <validation>
-            <valid-connection-checker>${env.SERVDB_CONNECTION_CHECKER}</valid-connection-checker>
-            <exception-sorter>${env.SERVDB_EXCEPTION_SORTER}</exception-sorter>
+            <valid-connection-checker class-name="${env.SERVDB_CONNECTION_CHECKER}"/>
+            <exception-sorter class-name="${env.SERVDB_EXCEPTION_SORTER}" />
             <background-validation>true</background-validation>
             <background-validation-millis>60000</background-validation-millis>
           </validation>
