@@ -68,7 +68,8 @@ ENV PORTDB_NONXA="true" \
     RESOURCEDISKROOTFOLDER="/entando-data/resources/" \
     PROTECTEDRESOURCEDISKROOTFOLDER="/entando-data/protected/" \
     INDEXDISKROOTFOLDER="/tmp/entando-indices" \
-    LC_ALL="en_US.UTF-8"
+    LC_ALL="en_US.UTF-8" \
+    SPRING_PROFILES_ACTIVE="default"
 RUN localedef -c -f UTF-8 -i en_US en_US.UTF-8 && \
     chmod ug+rw /usr/lib/locale/locale-archive && \
     mkdir -p /entando-data/databases  && chown -Rf $USERID_TO_USE:0 /entando-data/ && chmod -Rf ug+rw /entando-data/ && \
