@@ -511,7 +511,7 @@
         <subsystem xmlns="urn:jboss:domain:undertow:4.0">
       <buffer-cache name="default"/>
       <server name="default-server">
-                <http-listener name="default" socket-binding="http" redirect-socket="https"/>
+                <http-listener name="default" socket-binding="http" redirect-socket="https" max-post-size="${env.JBOSS_MAX_POST_SIZE}"/>
         <host name="default-host" alias="localhost">
           <location name="##RESOURCEROOTURL##" handler="cmscontent"/>
           <location name="/" handler="welcome-content"/>
