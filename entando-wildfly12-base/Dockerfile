@@ -70,7 +70,7 @@ ENV PORTDB_NONXA="true" \
     INDEXDISKROOTFOLDER="/tmp/entando-indices" \
     LC_ALL="en_US.UTF-8" \
     SPRING_PROFILES_ACTIVE="default" \
-    JBOSS_MAX_POST_SIZE="0"
+    JBOSS_MAX_POST_SIZE="1073741824"
 RUN localedef -c -f UTF-8 -i en_US en_US.UTF-8 && \
     chmod ug+rw /usr/lib/locale/locale-archive && \
     mkdir -p /entando-data/databases  && chown -Rf $USERID_TO_USE:0 /entando-data/ && chmod -Rf ug+rw /entando-data/ && \

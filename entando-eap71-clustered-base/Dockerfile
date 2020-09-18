@@ -41,4 +41,4 @@ ENV PORTDB_NONXA="true" \
     SERVDB_CONNECTION_CHECKER="org.jboss.jca.adapters.jdbc.extensions.novendor.NullValidConnectionChecker" \
     SERVDB_EXCEPTION_SORTER="org.jboss.jca.adapters.jdbc.extensions.novendor.NullExceptionSorter" \
     SPRING_PROFILES_ACTIVE="default" \
-    JBOSS_MAX_POST_SIZE="0"
+    JBOSS_MAX_POST_SIZE="1073741824"
