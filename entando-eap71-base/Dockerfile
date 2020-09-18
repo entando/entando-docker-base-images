@@ -70,7 +70,8 @@ ENV DATASOURCES="PORTDB,SERVDB" \
     RESOURCEDISKROOTFOLDER="/entando-data/resources/" \
     PROTECTEDRESOURCEDISKROOTFOLDER="/entando-data/protected/" \
     INDEXDISKROOTFOLDER="/tmp/entando-indices" \
-    LC_ALL="en_US.UTF-8"
+    LC_ALL="en_US.UTF-8" \
+    SPRING_PROFILES_ACTIVE="default"
 USER root
 RUN localedef -c -f UTF-8 -i en_US en_US.UTF-8 && \
     chmod ug+rw /usr/lib/locale/locale-archive && \

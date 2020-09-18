@@ -39,4 +39,5 @@ ENV PORTDB_NONXA="true" \
     SERVDB_BACKGROUND_VALIDATION="true" \
     SERVDB_BACKGROUND_VALIDATION_MILLIS="60000" \
     SERVDB_CONNECTION_CHECKER="org.jboss.jca.adapters.jdbc.extensions.novendor.NullValidConnectionChecker" \
-    SERVDB_EXCEPTION_SORTER="org.jboss.jca.adapters.jdbc.extensions.novendor.NullExceptionSorter"
+    SERVDB_EXCEPTION_SORTER="org.jboss.jca.adapters.jdbc.extensions.novendor.NullExceptionSorter" \
+    SPRING_PROFILES_ACTIVE="default"
