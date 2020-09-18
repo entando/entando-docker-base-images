@@ -71,7 +71,8 @@ ENV DATASOURCES="PORTDB,SERVDB" \
     PROTECTEDRESOURCEDISKROOTFOLDER="/entando-data/protected/" \
     INDEXDISKROOTFOLDER="/tmp/entando-indices" \
     LC_ALL="en_US.UTF-8" \
-    SPRING_PROFILES_ACTIVE="default"
+    SPRING_PROFILES_ACTIVE="default" \
+    JBOSS_MAX_POST_SIZE="1073741824"
 USER root
 RUN localedef -c -f UTF-8 -i en_US en_US.UTF-8 && \
     chmod ug+rw /usr/lib/locale/locale-archive && \
