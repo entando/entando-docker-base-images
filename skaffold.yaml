@@ -1,0 +1,35 @@
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+  artifacts:
+  - image: entando/entando-base-common
+    context: ./entando-base-common
+    docker: {}
+  tagPolicy:
+    envTemplate:
+      template: '{{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.VERSION}}'
+  local: {}
+deploy:
+  kubectl: {}
+profiles:
+- name: common
+  build:
+    artifacts:
+    - image: entando/entando-base-common
+      context: ./entando-base-common
+      docker:
+        dockerfile: Dockerfile
+- name: wildfly
+  build:
+    artifacts:
+      - image: entando/entando-wildfly15-base
+        context: ./entando-wildfly15-base
+        docker:
+          dockerfile: Dockerfile
+- name: eap
+  build:
+    artifacts:
+      - image: entando/entando-eap72-base
+        context: ./entando-eap72-base
+        docker:
+          dockerfile: Dockerfile

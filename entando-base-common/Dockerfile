@@ -1,11 +1,8 @@
-FROM openshift/wildfly-120-centos7:latest
-ARG ENTANDO_VERSION
-ARG ENTANDO_IMAGE_VERSION
-ARG MAVEN_MIRROR_FOR_DOCKER_BUILDS
-ENV ENTANDO_VERSION="$ENTANDO_VERSION" \
-    STI_SCRIPTS_PATH="/usr/libexec/s2i" \
-    USERID_TO_USE=1001 \
-    ENTANDO_COMMON_PATH="/entando-common"
+FROM busybox:latest
+
+ENV USERID_TO_USE=1001 \
+    ENTANDO_COMMON_PATH="/entando-common" \
+    HOME=opt/app-root/src
 COPY --chown=1001:0 ./entando-dependencies-bootstrap "${ENTANDO_COMMON_PATH}"
 USER $USERID_TO_USE
 COPY --chown=1001:0 ./settings.xml $HOME/.m2/settings.xml

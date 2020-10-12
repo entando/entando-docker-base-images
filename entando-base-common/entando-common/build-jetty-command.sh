@@ -27,7 +27,7 @@ if [ -z "$JETTY_VERSION" ]; then
       JETTY_VERSION=9.4.8.v20180619
     ;;
     *)
-      JETTY_VERSION=9.4.8.v20180619
+      JETTY_VERSION=9.4.32.v20200930
     ;;
   esac
 fi
