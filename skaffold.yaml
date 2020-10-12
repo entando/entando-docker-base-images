@@ -12,21 +12,21 @@ build:
 deploy:
   kubectl: {}
 profiles:
-- name: common
+- name: entando-base-common
   build:
     artifacts:
     - image: entando/entando-base-common
       context: ./entando-base-common
       docker:
         dockerfile: Dockerfile
-- name: wildfly
+- name: entando-wildfly15-base
   build:
     artifacts:
       - image: entando/entando-wildfly15-base
         context: ./entando-wildfly15-base
         docker:
           dockerfile: Dockerfile
-- name: eap
+- name: entando-eap72-base
   build:
     artifacts:
       - image: entando/entando-eap72-base
