@@ -41,7 +41,22 @@
         <!-- ##KEYCLOAK_EXTENSION## -->
     </extensions>
     <system-properties>
-        <property name="spring.profiles.active" value="${env.SPRING_PROFILES_ACTIVE}"/>
+
+        <!-- ### ENTANDO STANDARD PROPERTIES ### -->
+        <!-- abilita l'utilizzo di imagemagick per le operazioni automatiche di
+            resize e cropping delle immagini da parte del cms -->
+        <property name="imagemagick.enabled" value="true" />
+
+        <!-- ### PARAMETRI DI BUSINESS CUSTOM ### -->
+        <!-- numero massimo di oggetti che l'utente puo' aggiungere "alla mia lista" -->
+        <property name="preferiti.max.size" value="${env.NUM_PREFERITI}" />
+
+
+        <!-- ### ADFS ### -->
+        <!-- attiva la modalita' di autenticazione tramite adfs <property name="cdp.adfs.auth.active"
+            value="${env.ADFS_ACTIVE}"/> <property name="cdp.adfs.clientId" value="${env.ADFS_CLIENT_ID}"/>
+            <property name="cdp.adfs.redirectUrl" value="${env.ADFS_REDIRECT_URI}"/>
+            <property name="cdp.adfs.resource" value="${env.ADFS_RESOURCE_URI}"/> -->
     </system-properties>
     <management>
         <security-realms>
@@ -55,7 +70,7 @@
                 </authorization>
             </security-realm>
             <security-realm name="ApplicationRealm">
-                <!-- ##SSL## -->
+                <!-- No SSL configuration discovered -->
                 <authentication>
                     <local default-user="$local" allowed-users="*" skip-group-loading="true"/>
                     <properties path="application-users.properties" relative-to="jboss.server.config.dir"/>
@@ -98,7 +113,7 @@
         <subsystem xmlns="urn:jboss:domain:logging:6.0">
             <console-handler name="CONSOLE">
                 <formatter>
-                    <named-formatter name="##CONSOLE-FORMATTER##"/>
+                    <named-formatter name="COLOR-PATTERN"/>
                 </formatter>
             </console-handler>
             <logger category="com.arjuna">
@@ -131,7 +146,7 @@
             </formatter>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:batch-jberet:2.0">
-            <!-- ##DEFAULT_JOB_REPOSITORY## -->
+            <default-job-repository name="in-memory"/>
             <default-thread-pool name="batch"/>
             <job-repository name="in-memory">
                 <in-memory/>
@@ -145,29 +160,85 @@
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:5.0">
             <datasources>
-                <!-- ##DATASOURCES## -->
+                <datasource jta="true" jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true" statistics-enabled="${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}"> <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url> <driver>h2</driver> <security> <user-name>sa</user-name> <password>sa</password> </security> </datasource><!-- ##DATASOURCES## -->
+                <!-- ENTANDO PORT -->
+                <datasource jndi-name="${env.DB_PORT_JNDI}" enabled="true" use-java-context="true" pool-name="portDataSource" use-ccm="true">
+                    <connection-url>${env.DB_PORT_CONN}</connection-url>
+                    <driver>${env.DB_DRIVER}</driver>
+                    <security>
+                        <user-name>${env.DB_PORT_UID}</user-name>
+                        <password>${env.DB_PORT_PSW}</password>
+                    </security>
+                    <validation>
+                        <check-valid-connection-sql>${env.DB_SQL_CHECK}</check-valid-connection-sql>
+                        <background-validation>true</background-validation>
+                        <background-validation-millis>60000</background-validation-millis>
+                        <!--<validate-on-match>true</validate-on-match>-->
+                    </validation>
+                    <pool>
+                        <min-pool-size>0</min-pool-size>
+                        <initial-pool-size>${env.DB_INITIAL_POOL_SIZE}</initial-pool-size>
+                        <max-pool-size>${env.DB_MAX_POOL_SIZE}</max-pool-size>
+                        <flush-strategy>IdleConnections</flush-strategy>
+                    </pool>
+                </datasource>
+                <!-- ENTANDO SERV -->
+                <datasource jndi-name="${env.DB_SERV_JNDI}" enabled="true" use-java-context="true" pool-name="servDataSource" use-ccm="true">
+                    <connection-url>${env.DB_SERV_CONN}</connection-url>
+                    <driver>${env.DB_DRIVER}</driver>
+                    <security>
+                        <user-name>${env.DB_SERV_UID}</user-name>
+                        <password>${env.DB_SERV_PSW}</password>
+                    </security>
+                    <validation>
+                        <check-valid-connection-sql>${env.DB_SQL_CHECK}</check-valid-connection-sql>
+                        <background-validation>true</background-validation>
+                        <background-validation-millis>60000</background-validation-millis>
+                        <!--<validate-on-match>true</validate-on-match>-->
+                    </validation>
+                    <pool>
+                        <min-pool-size>0</min-pool-size>
+                        <initial-pool-size>${env.DB_INITIAL_POOL_SIZE}</initial-pool-size>
+                        <max-pool-size>${env.DB_MAX_POOL_SIZE}</max-pool-size>
+                        <flush-strategy>IdleConnections</flush-strategy>
+                    </pool>
+                </datasource>
+                <!-- ELPA DS -->
+                <datasource jndi-name="${env.DB_ENTANDO_ELPA_DB_JNDI_NAME}" enabled="true" use-java-context="true" pool-name="entandoDbElpaDataSource" use-ccm="true">
+                    <connection-url>jdbc:${env.DB_DRIVER}://${env.DB_ENTANDO_ELPA_DB_CONNECTION_STRING}</connection-url>
+                    <driver>${env.DB_DRIVER}</driver>
+                    <security>
+                        <user-name>${env.DB_USERNAME}</user-name>
+                        <password>${env.DB_PASSWORD}</password>
+                    </security>
+                    <validation>
+                        <check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
+                        <background-validation>true</background-validation>
+                        <background-validation-millis>60000</background-validation-millis>
+                        <!--<validate-on-match>true</validate-on-match>-->
+                    </validation>
+                    <pool>
+                        <flush-strategy>IdleConnections</flush-strategy>
+                    </pool>
+                </datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
                     </driver>
-                    <driver name="mysql" module="com.mysql">
-                        <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
+                    <driver name="mariadb" module="org.mariadb.jdbc">
+                        <driver-class>org.mariadb.jdbc.Driver</driver-class>
+                        <xa-datasource-class>org.mariadb.jdbc.MySQLDataSource</xa-datasource-class>
                     </driver>
-                    <driver name="derby" module="org.apache.derby.jdbc">
-                        <xa-datasource-class>org.apache.derby.jdbc.EmbeddedXADataSource40</xa-datasource-class>
-                    </driver>
-                    <driver name="postgresql" module="org.postgresql">
-                        <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
-                    </driver>
-                    <driver name="oracle" module="com.oracle.jdbc">
-                        <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+                    <driver name="postgresql" module="org.postgresql.jdbc">
+                        <driver-class>org.postgresql.Driver</driver-class>
+                        <!--                        <xa-datasource-class>org.postgresql.xa.PGXADatataSource</xa-datasource-class>-->
                     </driver>
                     <!-- ##DRIVERS## -->
                 </drivers>
             </datasources>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:deployment-scanner:2.0">
-            <deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000" runtime-failure-causes-rollback="${jboss.deployment.scanner.rollback.on.failure:false}" auto-deploy-exploded="##AUTO_DEPLOY_EXPLODED##"/>
+            <deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000" runtime-failure-causes-rollback="${jboss.deployment.scanner.rollback.on.failure:false}" auto-deploy-exploded="false"/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:discovery:1.0"/>
         <subsystem xmlns="urn:jboss:domain:ee:4.0">
@@ -187,8 +258,8 @@
                 </managed-scheduled-executor-services>
             </concurrent>
             <default-bindings context-service="java:jboss/ee/concurrency/context/default"
-                    datasource="##DEFAULT_DATASOURCE##"
-                    jms-connection-factory="##DEFAULT_JMS##"
+                    datasource="java:jboss/datasources/ExampleDS"
+                    jms-connection-factory="java:jboss/DefaultJMSConnectionFactory"
                     managed-executor-service="java:jboss/ee/concurrency/executor/default"
                     managed-scheduled-executor-service="java:jboss/ee/concurrency/scheduler/default"
                     managed-thread-factory="java:jboss/ee/concurrency/factory/default"/>
@@ -220,7 +291,7 @@
                 <passivation-store name="infinispan" cache-container="ejb" max-size="10000"/>
             </passivation-stores>
             <async thread-pool-name="default"/>
-            <!-- ##TIMER_SERVICE## -->
+            <timer-service thread-pool-name="default" default-data-store="default-file-store">                <data-stores>                    <file-data-store name="default-file-store" path="timer-service-data" relative-to="jboss.server.data.dir"/>                    <!-- ##DATASTORES## -->                </data-stores>            </timer-service>
             <remote connector-ref="http-remoting-connector" thread-pool-name="default">
                 <channel-creation-options>
                     <option name="READ_TIMEOUT" value="${prop.remoting-connector.read.timeout:20}" type="xnio"/>
@@ -236,7 +307,7 @@
             <default-security-domain value="other"/>
             <default-missing-method-permissions-deny-access value="true"/>
             <log-system-exceptions value="true"/>
-            <!-- ##EJB_APPLICATION_SECURITY_DOMAINS## -->
+
         </subsystem>
         <subsystem xmlns="urn:wildfly:elytron:4.0" final-providers="combined-providers" disallowed-providers="OracleUcrypto">
             <providers>
@@ -251,7 +322,7 @@
                 <file-audit-log name="local-audit" path="audit.log" relative-to="jboss.server.log.dir" format="JSON"/>
             </audit-logging>
             <security-domains>
-                <!-- ##ELYTRON_SECURITY_DOMAIN## -->
+
                 <security-domain name="ApplicationDomain" default-realm="ApplicationRealm" permission-mapper="default-permission-mapper">
                     <realm name="ApplicationRealm" role-decoder="groups-to-roles"/>
                     <realm name="local"/>
@@ -300,7 +371,7 @@
                 </permission-set>
             </permission-sets>
             <http>
-                <!-- ##HTTP_AUTHENTICATION_FACTORY## -->
+
                 <http-authentication-factory name="application-http-authentication" http-server-mechanism-factory="global" security-domain="ApplicationDomain">
                     <mechanism-configuration>
                         <mechanism mechanism-name="BASIC">
@@ -347,8 +418,19 @@
                 </mechanism-provider-filtering-sasl-server-factory>
                 <provider-sasl-server-factory name="global"/>
             </sasl>
-            <!-- ##TLS## -->
-            <!-- ##ELYTRON_TLS## -->
+
+            <tls>
+                <key-stores>
+                    <!-- ##ELYTRON_KEY_STORE## -->
+                </key-stores>
+                <key-managers>
+                    <!-- ##ELYTRON_KEY_MANAGER## -->
+                </key-managers>
+                <server-ssl-contexts>
+                    <!-- ##ELYTRON_SERVER_SSL_CONTEXT## -->
+                </server-ssl-contexts>
+            </tls>
+
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:infinispan:7.0">
             <cache-container name="server" aliases="singleton cluster" default-cache="default" module="org.wildfly.clustering.server">
@@ -357,7 +439,7 @@
                     <transaction mode="BATCH"/>
                 </replicated-cache>
             </cache-container>
-            <cache-container name="web" default-cache="repl" module="org.wildfly.clustering.web.infinispan">
+            <cache-container name="web" default-cache="dist" module="org.wildfly.clustering.web.infinispan">
                 <transport lock-timeout="60000"/>
                 <replicated-cache name="repl">
                     <locking isolation="REPEATABLE_READ"/>
@@ -365,8 +447,6 @@
                     <file-store/>
                 </replicated-cache>
                 <distributed-cache name="dist">
-                    <locking isolation="REPEATABLE_READ"/>
-                    <transaction mode="BATCH"/>
                     <file-store/>
                 </distributed-cache>
             </cache-container>
@@ -554,7 +634,7 @@
                 </replicated-cache>
             </cache-container>
         </subsystem>
-        <subsystem xmlns="urn:jboss:domain:io:3.0">
+        <subsystem xmlns="urn:jboss:domain:io:2.0">
             <worker name="default"/>
             <buffer-pool name="default"/>
         </subsystem>
@@ -586,16 +666,22 @@
             <stacks>
                 <stack name="udp">
                     <transport type="UDP" socket-binding="jgroups-udp"/>
-                    <!-- ##JGROUPS_PING_PROTOCOL## -->
+                    <protocol type="openshift.KUBE_PING" />
                     <protocol type="MERGE3"/>
                     <protocol type="FD_SOCK"/>
                     <protocol type="FD_ALL"/>
                     <protocol type="VERIFY_SUSPECT"/>
-                    <!-- ##JGROUPS_ENCRYPT## -->
+
                     <protocol type="pbcast.NAKACK2"/>
                     <protocol type="UNICAST3"/>
                     <protocol type="pbcast.STABLE"/>
-                    <!-- ##JGROUPS_AUTH## -->
+
+                    <auth-protocol type="AUTH">
+                        <digest-token algorithm="SHA-512">
+                            <shared-secret-reference clear-text="4O0N3Ok6bgrkDdtk0CVg5TG4AGiqPNhWucX40eOW"/>
+                        </digest-token>
+                    </auth-protocol>
+
                     <protocol type="pbcast.GMS">
                         <property name="join_timeout">${env.JGROUPS_JOIN_TIMEOUT:10000}</property>
                     </protocol>
@@ -608,16 +694,22 @@
                         <property name="use_ip_addrs">false</property>
                         <property name="sock_conn_timeout">300</property>
                     </transport>
-                    <!-- ##JGROUPS_PING_PROTOCOL## -->
+                    <protocol type="openshift.KUBE_PING" />
                     <protocol type="MERGE3"/>
                     <protocol type="FD_SOCK"/>
                     <protocol type="FD_ALL"/>
                     <protocol type="VERIFY_SUSPECT"/>
-                    <!-- ##JGROUPS_ENCRYPT## -->
+
                     <protocol type="pbcast.NAKACK2"/>
                     <protocol type="UNICAST3"/>
                     <protocol type="pbcast.STABLE"/>
-                    <!-- ##JGROUPS_AUTH## -->
+
+                    <auth-protocol type="AUTH">
+                        <digest-token algorithm="SHA-512">
+                            <shared-secret-reference clear-text="4O0N3Ok6bgrkDdtk0CVg5TG4AGiqPNhWucX40eOW"/>
+                        </digest-token>
+                    </auth-protocol>
+
                     <protocol type="pbcast.GMS">
                         <property name="join_timeout">${env.JGROUPS_JOIN_TIMEOUT:10000}</property>
                     </protocol>
@@ -643,7 +735,37 @@
             </mail-session>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:messaging-activemq:4.0">
-            <!-- ##MESSAGING_SUBSYSTEM_CONFIG## -->
+            <server name="default">
+                <statistics enabled="${wildfly.messaging-activemq.statistics-enabled:${wildfly.statistics-enabled:false}}" />
+                <journal pool-files="10"/>
+                <security-setting name="#">
+                    <role name="guest" send="true" consume="true" create-non-durable-queue="true" delete-non-durable-queue="true"/>
+                </security-setting>
+                <address-setting name="#" dead-letter-address="jms.queue.DLQ" expiry-address="jms.queue.ExpiryQueue" max-size-bytes="10485760" page-size-bytes="2097152" message-counter-history-day-limit="10" redistribution-delay="1000"/>
+                <http-connector name="http-connector" socket-binding="http-messaging" endpoint="http-acceptor"/>
+                <http-connector name="http-connector-throughput" socket-binding="http-messaging" endpoint="http-acceptor-throughput">
+                    <param name="batch-delay" value="50"/>
+                </http-connector>
+                <!-- ##AMQ_REMOTE_CONNECTOR## -->
+                <in-vm-connector name="in-vm" server-id="0">
+                    <param name="buffer-pooling" value="false"/>
+                </in-vm-connector>
+                <http-acceptor name="http-acceptor" http-listener="default"/>
+                <http-acceptor name="http-acceptor-throughput" http-listener="default">
+                    <param name="batch-delay" value="50"/>
+                    <param name="direct-deliver" value="false"/>
+                </http-acceptor>
+                <in-vm-acceptor name="in-vm" server-id="0">
+                    <param name="buffer-pooling" value="false"/>
+                </in-vm-acceptor>
+                <jms-queue name="ExpiryQueue" entries="java:/jms/queue/ExpiryQueue"/>
+                <jms-queue name="DLQ" entries="java:/jms/queue/DLQ"/>
+
+                <connection-factory name="InVmConnectionFactory" connectors="in-vm" entries="java:/ConnectionFactory"/>
+                <connection-factory name="RemoteConnectionFactory" connectors="http-connector" entries="java:jboss/exported/jms/RemoteConnectionFactory" reconnect-attempts="-1" />
+                <pooled-connection-factory name="activemq-ra" transaction="xa" connectors="in-vm" entries="java:/JmsXA java:jboss/DefaultJMSConnectionFactory"/>
+                <!-- ##AMQ_POOLED_CONNECTION_FACTORY## -->
+            </server>
         </subsystem>
         <subsystem xmlns="urn:wildfly:microprofile-config-smallrye:1.0">
             <!-- ##MICROPROFILE_CONFIG_SOURCE## -->
@@ -660,6 +782,64 @@
         <subsystem xmlns="urn:jboss:domain:naming:2.0">
             <!-- ##MESSAGING_REMOTE_BINDINGS## -->
             <!-- ##AMQ_REMOTE_CONTEXT## -->
+            <bindings>
+
+                <!-- posizione su disco condiviso dal cluster dove vengono gestiti gli
+                    indici lucene di base di entando -->
+                <simple name="java:jboss/cdp/indexDiskRootFolder" value="/entando-resources/indexdir" type="java.lang.String" />
+
+                <!-- posizione su disco condiviso dal cluster dove vengono gestite le
+                    risorse protette di entando (immagini e alleggati soggetti ad autorizzazione) -->
+                <simple name="java:jboss/cdp/protectedResourceDiskRootFolder" value="/entando-resources/protected" type="java.lang.String" />
+
+                <!-- posizione su cui vengono appoggiate le risorse di tipo "free access"
+                    coincide con la welcome-content di jboss -->
+                <simple name="java:jboss/cdp/resourceDiskRootFolder" value="/entando-resources/welcome-content/resources" type="java.lang.String" />
+
+                <!-- path web al quale sono esposte le risorse statiche (cdd, js, etc.)
+                    presenti nell'applciazione -->
+                <simple name="java:jboss/cdp/resourceRootURL" value="/sitointernet/resources/" type="java.lang.String" />
+
+                <!-- path web al quale sono esposte le risorse protette (presenti nella
+                    folder java:jboss/cdp/protectedResourceDiskRootFolder) -->
+                <simple name="java:jboss/cdp/protectedResourceRootURL" value="/sitointernet/protected" type="java.lang.String" />
+
+                <!-- path al quale sono esposte le risorse "free access" (all'interno
+                    della welcome content di jboss) -->
+                <simple name="java:jboss/cdp/cmsResourceRootURL" value="/resources/" type="java.lang.String" />
+
+                <!-- base url dell'applicazione -->
+                <simple name="java:jboss/cdp/applicationBaseURL" value="${env.BASE_URL}" type="java.lang.String" />
+
+                <!-- base url delle risorse free -->
+                <simple name="java:jboss/cdp/absoluteResourceRootURL" value="${env.BASE_RESOURCE_URL}" type="java.lang.String" />
+
+                <!-- configurazione di base letta sulla tabella sysconfig del db port
+                    di entando -->
+                <simple name="java:jboss/cdp/configVersion" value="production" type="java.lang.String" />
+
+                <!-- LOG ENTANDO -->
+                <!-- parametro che abilita il log sul file -->
+                <simple name="java:jboss/cdp/logActiveFileOutput" value="false" type="java.lang.String" />
+
+                <!-- parametri non utilizzati in caso di java:jboss/cdp/logActiveFileOutput
+                    = false -->
+                <simple name="java:jboss/cdp/logFilesCount" value="10" type="java.lang.String" />
+                <simple name="java:jboss/cdp/logFileSize" value="500000" type="java.lang.String" />
+                <simple name="java:jboss/cdp/logLevel" value="INFO" type="java.lang.String" />
+                <simple name="java:jboss/cdp/logName" value="cdp.log" type="java.lang.String" />
+                <simple name="java:jboss/cdp/logFilePrefix" value="/tmp/cdp_log" type="java.lang.String" />
+
+                <!-- B2C -->
+                <!-- parametri utilizzati per B2C -->
+                <simple name="java:jboss/cdp/b2cClientId" value="${env.B2C_CLIENTID}" type="java.lang.String" />
+                <simple name="java:jboss/cdp/b2cSecret" value="${env.B2C_SECRET}" type="java.lang.String" />
+                <simple name="java:jboss/cdp/b2cApiScope" value="${env.B2C_API_SCOPE}" type="java.lang.String" />
+                <simple name="java:jboss/cdp/b2cSignUpSignInAuthority" value="https://${env.B2C_HOST}/tfp/${env.B2C_TENANT}/${env.B2C_POLICY_SIGN_UP_SIGN_IN}/" type="java.lang.String" />
+                <simple name="java:jboss/cdp/b2cSignOutAuthority" value="https://${env.B2C_HOST}/${env.B2C_TENANT}/${env.B2C_POLICY_SIGN_UP_SIGN_IN}/oauth2/v2.0/logout" type="java.lang.String" />
+
+
+            </bindings>
             <remote-naming/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:pojo:1.0"/>
@@ -674,7 +854,7 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:sar:1.0"/>
         <subsystem xmlns="urn:jboss:domain:security:2.0">
-            <!-- ##ELYTRON_INTEGRATION## -->
+
             <security-domains>
                 <security-domain name="other" cache-type="default">
                     <authentication>
@@ -697,8 +877,22 @@
                         <policy-module code="Delegating" flag="required"/>
                     </authorization>
                 </security-domain>
+                <!-- ### SCURITY DOMAIN PER SOLR/ ZOOKEEPER ### Il file entando.keytab
+                                        va copiato su Gluster dei progetti di dev, test e prod -->
+                <security-domain name="kerberos" cache-type="default">
+                    <authentication>
+                        <login-module code="com.sun.security.auth.module.Krb5LoginModule" flag="required">
+                            <module-option name="useKeyTab" value="true" />
+                            <module-option name="keyTab" value="/internet/entando.keytab" />
+                            <module-option name="storeKey" value="true" />
+                            <module-option name="useTicketCache" value="false" />
+                            <module-option name="debug" value="false" />
+                            <module-option name="principal" value="entando@CDPSEDE.CASSADDPP.IT" />
+                        </login-module>
+                    </authentication>
+                </security-domain>
                 <!-- ##KEYCLOAK_SECURITY_DOMAIN## -->
-                <!-- ##ADDITIONAL_SECURITY_DOMAINS## -->
+                <!-- no additional security domains configured --><!-- ##ADDITIONAL_SECURITY_DOMAINS## -->
             </security-domains>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:security-manager:1.0">
@@ -728,23 +922,22 @@
         <subsystem xmlns="urn:jboss:domain:undertow:7.0" default-server="default-server" default-virtual-host="default-host" default-servlet-container="default" default-security-domain="other" statistics-enabled="${wildfly.undertow.statistics-enabled:${wildfly.statistics-enabled:false}}">
             <buffer-cache name="default"/>
             <server name="default-server">
-                <ajp-listener name="ajp" max-post-size="${env.JBOSS_MAX_POST_SIZE}" socket-binding="ajp"/>
-                <http-listener name="default" socket-binding="http" redirect-socket="https" enable-http2="true" proxy-address-forwarding="true"
-                        max-post-size="${env.JBOSS_MAX_POST_SIZE}"/>
-                <!-- ##HTTPS_CONNECTOR## -->
+                <ajp-listener name="ajp" max-post-size="1048576000" socket-binding="ajp"/>
+                <http-listener name="default" max-post-size="1048576000" socket-binding="http" redirect-socket="https" enable-http2="true" proxy-address-forwarding="true"/>
+                <!-- No HTTPS configuration discovered -->
                 <host name="default-host" alias="localhost">
                     <location name="/" handler="welcome-content"/>
-                    <location name="##RESOURCEROOTURL##" handler="cmscontent"/>
+                    <location name="/cmsresources" handler="cmsresources"/>
                     <!-- ##ACCESS_LOG_VALVE## -->
                     <!-- ##FILTER_REFS## -->
                     <http-invoker security-realm="ApplicationRealm"/>
-                    <filter-ref name="x-frame-options"/>
+                    <!--                    <filter-ref name="x-frame-options"/>-->
                     <filter-ref name="x-xss-protection"/>
                     <filter-ref name="x-content-type-options"/>
-                    <filter-ref name="content-security-policy"/>
+                    <!--                    <filter-ref name="content-security-policy"/>-->
                     <filter-ref name="strict-transport-security"/>
-                    <filter-ref name="server-header"/>
-                    <filter-ref name="x-powered-by-header"/>
+                    <!-- ##FILTRI PER REDIREZIONE VECCHIO PORTALE SU NUOVO## -->
+                    <filter-ref name="redirectWelcomePage"/>
                 </host>
             </server>
             <servlet-container name="default">
@@ -753,18 +946,18 @@
             </servlet-container>
             <handlers>
                 <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>
-                <file name="cmscontent" path="/entando-data/resources"/>
+                <file name="cmsresources" path="/entando-resources/welcome-content/resources"/>
             </handlers>
-            <!-- ##HTTP_APPLICATION_SECURITY_DOMAINS## -->
+
             <!-- ##HTTP_FILTERS_MARKER## -->
             <filters>
-                <response-header name="server-header" header-name="Server" header-value="JBoss-EAP/7"/>
-                <response-header name="x-powered-by-header" header-name="X-Powered-By" header-value="Undertow/1"/>
-                <response-header name="x-frame-options" header-name="X-Frame-Options" header-value="SAMEORIGIN"/>
+                <!--                <response-header name="x-frame-options" header-name="X-Frame-Options" header-value="SAMEORIGIN"/>-->
                 <response-header name="x-xss-protection" header-name="X-XSS-Protection" header-value="1; mode=block"/>
                 <response-header name="x-content-type-options" header-name="X-Content-Type-Options" header-value="nosniff"/>
-                <response-header name="content-security-policy" header-name="Content-Security-Policy" header-value="script-src 'unsafe-inline' * ;"/>
+                <!--                <response-header name="content-security-policy" header-name="Content-Security-Policy" header-value="script-src 'unsafe-inline' * ;"/>-->
                 <response-header name="strict-transport-security" header-name="Strict-Transport-Security" header-value="max-age=31536000; includeSubDomains;"/>
+                <!-- ##FILTRI PER REDIREZIONE VECCHIO PORTALE SU NUOVO## -->
+                <expression-filter name="redirectWelcomePage" expression="path('/') -> { set(attribute='%{o,Location}', value='/sitointernet/it/homepage.page'); response-code(301); }"/>
             </filters>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:webservices:2.0">
@@ -807,7 +1000,7 @@
         <outbound-socket-binding name="http-messaging">
             <remote-destination host="${jboss.messaging.host:localhost}" port="${jboss.http.port:8080}"/>
         </outbound-socket-binding>
-        <!-- ##MESSAGING_PORTS## -->
+        <socket-binding name="messaging" port="5445"/><socket-binding name="messaging-throughput" port="5455"/>
         <!-- ##AMQ_MESSAGING_SOCKET_BINDING## -->
         <socket-binding name="txn-recovery-environment" port="4712"/>
         <socket-binding name="txn-status-manager" port="4713"/>

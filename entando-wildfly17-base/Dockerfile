@@ -1,23 +1,22 @@
 # This image provides a base for building and running Entando WildFly based applications.
-# It builds using maven and runs the resulting artifacts on WildFly 12.0.0 Final
-FROM entando/entando-base-common:6.3.0 AS entando-base-common
+# It builds using maven and runs the resulting artifacts on WildFly 17.0.0 Final
+FROM entando/entando-base-common:6.3.1 AS entando-base-common
 
-# Note to self: we couldn't use entando-wildfly12-quickstart-openshift because of permissions on Volumes TODO see if it is fixable
-FROM openshift/wildfly-150-centos7:latest
+FROM quay.io/wildfly/wildfly-centos7:17.0
 LABEL maintainer="Ampie Barnard <a.barnard@entando.com>" \
-      io.k8s.description="Platform for building and running Entando quickstart applications on WildFly 12.0.0.Final" \
-      io.k8s.display-name="Entando on WildFly 12.0.0.Final"
-ENV USERID_TO_USE=1001 \
+      io.k8s.description="Platform for building and running Entando quickstart applications on WildFly 17.0.0.Final" \
+      io.k8s.display-name="Entando on WildFly 17.0.0.Final"
+ENV USERID_TO_USE=185 \
     STI_SCRIPTS_PATH="/usr/libexec/s2i"\
     ENTANDO_COMMON_PATH="/entando-common"
 USER root
-RUN  yum install -y ImageMagick && yum clean all
-COPY --chown=1001:0 ./contrib/wildfly-configuration/standalone.xml /wildfly/standalone/configuration/standalone.xml
-COPY --chown=1001:0 ./s2i/bin/run ${STI_SCRIPTS_PATH}/run
-COPY --chown=1001:0 --from=entando-base-common /opt/app-root/src/wildfly/modules /wildfly/modules
-COPY --chown=1001:0 --from=entando-base-common /opt/app-root/src/jetty-runner /jetty-runner
-COPY --chown=1001:0 --from=entando-base-common /opt/app-root/src/.m2 $HOME/.m2
-COPY --chown=1001:0 --from=entando-base-common ${ENTANDO_COMMON_PATH} ${ENTANDO_COMMON_PATH}
+RUN  yum install -y ImageMagick java-11-openjdk && yum clean all
+COPY --chown=185:0 ./contrib/wildfly-configuration/standalone.xml /wildfly/standalone/configuration/standalone.xml
+COPY --chown=185:0 ./s2i/bin/run ${STI_SCRIPTS_PATH}/run
+COPY --chown=185:0 --from=entando-base-common /opt/app-root/src/wildfly/modules /wildfly/modules
+COPY --chown=185:0 --from=entando-base-common /opt/app-root/src/jetty-runner /jetty-runner
+COPY --chown=185:0 --from=entando-base-common /opt/app-root/src/.m2 $HOME/.m2
+COPY --chown=185:0 --from=entando-base-common ${ENTANDO_COMMON_PATH} ${ENTANDO_COMMON_PATH}
 
 ENV PORTDB_NONXA="true" \
     PORTDB_JTA="false" \
