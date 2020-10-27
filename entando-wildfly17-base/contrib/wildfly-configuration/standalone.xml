@@ -595,33 +595,13 @@
                 <channel name="ee" stack="tcp" cluster="ejb"/>
             </channels>
             <stacks>
-                <stack name="udp">
-                    <transport type="UDP" socket-binding="jgroups-udp"/>
-                    <protocol type="PING"/>
-                    <protocol type="MERGE3"/>
-                    <socket-protocol type="FD_SOCK" socket-binding="jgroups-udp-fd"/>
-                    <protocol type="FD_ALL"/>
-                    <protocol type="VERIFY_SUSPECT"/>
-                    <protocol type="pbcast.NAKACK2"/>
-                    <protocol type="UNICAST3"/>
-                    <protocol type="pbcast.STABLE"/>
-                    <protocol type="pbcast.GMS"/>
-                    <protocol type="UFC"/>
-                    <protocol type="MFC"/>
-                    <protocol type="FRAG3"/>
-                </stack>
                 <stack name="tcp">
                     <transport type="TCP" socket-binding="jgroups-tcp">
                         <property name="bind_port">7600</property>
-                        <property name="bind_addr">${env.POD_IP}</property>
                     </transport>
                     <!--                    <socket-protocol type="MPING" socket-binding="jgroups-mping"/>-->
                     <protocol type="org.jgroups.protocols.kubernetes.KUBE_PING" module="org.jgroups.kubernetes">
                         <property name="port_range">0</property>
-                        <property name="labels">${env.KUBERNETES_LABELS}</property>
-                        <property name="namespace">${env.KUBERNETES_NAMESPACE}</property>
-                        <property name="masterHost">${env.KUBERNETES_SERVICE_HOST}</property>
-                        <property name="masterPort">${env.KUBERNETES_SERVICE_PORT}</property>
                     </protocol>
                     <protocol type="MERGE3"/>
                     <socket-protocol type="FD_SOCK" socket-binding="jgroups-tcp-fd"/>
@@ -636,9 +616,7 @@
                         </digest-token>
                     </auth-protocol>
                     <protocol type="pbcast.GMS">
-                        <property name="join_timeout">
-                            160000
-                        </property>
+                        <property name="join_timeout">${env.JGROUPS_JOIN_TIMEOUT:10000}</property>
                     </protocol>
                     <protocol type="MFC"/>
                     <protocol type="FRAG3"/>
