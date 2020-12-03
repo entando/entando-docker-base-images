@@ -17,6 +17,7 @@ if [ "$PORTDB_DRIVER" = "derby" ] && [ "$SERVDB_DRIVER" = "derby" ]; then
       mkdir -p /entando-data-templates/databases/
       cp -Rf /entando-data/databases/* /entando-data-templates/databases/
       chmod -Rf ug+rw /entando-data-templates/databases/
+      chmod -Rf ug+rw /tmp/
       chown -Rf $USERID_TO_USE:0 /entando-data-templates/databases/
       rm -Rf /entando-data/protected
       rm -Rf /entando-data/resources
