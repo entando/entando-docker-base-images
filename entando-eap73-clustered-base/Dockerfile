@@ -6,8 +6,8 @@ FROM entando-base-common:6.3.1-eap73 AS entando-base-common
 FROM registry.redhat.io/jboss-eap-7/eap73-openjdk8-openshift-rhel7
 
 LABEL maintainer="Ampie Barnard <a.barnard@entando.com>" \
-      io.k8s.description="Platform for building and running Entando clustered applications on EAP 7.2" \
-      io.k8s.display-name="Entando on EAP 7.1"
+      io.k8s.description="Platform for building and running Entando clustered applications on EAP 7.3" \
+      io.k8s.display-name="Entando on EAP 7.3"
 ENV USERID_TO_USE=185 \
     STI_SCRIPTS_PATH="/usr/local/s2i" \
     ENTANDO_COMMON_PATH="/entando-common"
