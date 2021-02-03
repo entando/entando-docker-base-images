@@ -1,7 +1,7 @@
 # This image provides a very lightweight base for building and running Entando
 # EAP based applications with an embedded Derby db.
 # It builds using maven and runs the resulting artifacts on EAP
-FROM entando-base-common:6.3.1-eap73 AS entando-base-common
+FROM entando/entando-base-common:6.3.1 AS entando-base-common
 
 FROM registry.redhat.io/jboss-eap-7/eap73-openjdk8-openshift-rhel7
 

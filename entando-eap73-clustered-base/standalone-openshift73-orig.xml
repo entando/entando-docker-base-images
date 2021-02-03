@@ -40,9 +40,6 @@
         <extension module="org.wildfly.extension.security.manager"/>
         <extension module="org.wildfly.extension.undertow"/>
     </extensions>
-    <system-properties>
-        <property name="spring.profiles.active" value="${env.SPRING_PROFILES_ACTIVE}"/>
-    </system-properties>
     <management>
         <security-realms>
             <security-realm name="ManagementRealm">
@@ -149,19 +146,6 @@
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
                     </driver>
-                    <driver name="mysql" module="com.mysql">
-                        <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
-                    </driver>
-                    <driver name="derby" module="org.apache.derby.jdbc">
-                        <xa-datasource-class>org.apache.derby.jdbc.EmbeddedXADataSource40</xa-datasource-class>
-                    </driver>
-                    <driver name="postgresql" module="org.postgresql">
-                        <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
-                    </driver>
-                    <driver name="oracle" module="com.oracle.jdbc">
-                        <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
-                    </driver>
-                    <!-- ##DRIVERS## -->
                 </drivers>
             </datasources>
         </subsystem>
@@ -396,162 +380,6 @@
                 </invalidation-cache>
                 <replicated-cache name="timestamps"/>
             </cache-container>
-            <cache-container name="entando" default-cache="Entando_Cache">
-                <transport/>
-                <replicated-cache name="Entando_Cache">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                    <object-memory size="100000"/>
-                    <expiration interval="120000" lifespan="600000" max-idle="600000"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="pagecache" default-cache="Entando_PageManager">
-                <transport/>
-                <replicated-cache name="Entando_PageManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="pagemodelcache" default-cache="Entando_PageModelManager">
-                <transport/>
-                <replicated-cache name="Entando_PageModelManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="categorycache" default-cache="Entando_CategoryManager">
-                <transport/>
-                <replicated-cache name="Entando_CategoryManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="widgettypecache" default-cache="Entando_WidgetTypeManager">
-                <transport/>
-                <replicated-cache name="Entando_WidgetTypeManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="configcache" default-cache="Entando_ConfigManager">
-                <transport/>
-                <replicated-cache name="Entando_ConfigManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="rolecache" default-cache="Entando_RoleManager">
-                <transport/>
-                <replicated-cache name="Entando_RoleManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="groupcache" default-cache="Entando_GroupManager">
-                <transport/>
-                <replicated-cache name="Entando_GroupManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="langcache" default-cache="Entando_LangManager">
-                <transport/>
-                <replicated-cache name="Entando_LangManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="cacheinfocache" default-cache="Entando_CacheInfoManager">
-                <transport/>
-                <replicated-cache name="Entando_CacheInfoManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="i18lncache" default-cache="Entando_I18nManager">
-                <transport/>
-                <replicated-cache name="Entando_I18nManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="userprofilecache" default-cache="Entando_UserProfileManager">
-                <transport/>
-                <replicated-cache name="Entando_UserProfileManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="initializercache" default-cache="Entando_InitializerManager">
-                <transport/>
-                <replicated-cache name="Entando_InitializerManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="apicatalogcache" default-cache="Entando_ApiCatalogManager">
-                <transport/>
-                <replicated-cache name="Entando_ApiCatalogManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="keygeneratorcache" default-cache="Entando_KeyGeneratorManager">
-                <transport/>
-                <replicated-cache name="Entando_KeyGeneratorManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="dataobjectcache" default-cache="Entando_DataObjectManager">
-                <transport/>
-                <replicated-cache name="Entando_DataObjectManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="dataobjectmodelcache" default-cache="Entando_DataObjectModelManager">
-                <transport/>
-                <replicated-cache name="Entando_DataObjectModelManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="dataobjectmappercache" default-cache="Entando_DataObjectPageMapperManager">
-                <transport/>
-                <replicated-cache name="Entando_DataObjectPageMapperManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="jacmscontentmanagercache" default-cache="Entando_jacmsContentManager">
-                <transport/>
-                <replicated-cache name="Entando_jacmsContentManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="jacmscontentmodelcache" default-cache="Entando_ContentModelManager">
-                <transport/>
-                <replicated-cache name="Entando_ContentModelManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="jacmscontentpagemappercache" default-cache="Entando_ContentPageMapperManager">
-                <transport/>
-                <replicated-cache name="Entando_ContentPageMapperManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
-            <cache-container name="jacmsresourcemanagercache" default-cache="Entando_ResourceManager">
-                <transport/>
-                <replicated-cache name="Entando_ResourceManager">
-                    <locking acquire-timeout="60000"/>
-                    <transaction locking="OPTIMISTIC" mode="BATCH"/>
-                </replicated-cache>
-            </cache-container>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:io:3.0">
             <worker name="default"/>
@@ -698,20 +526,11 @@
         <subsystem xmlns="urn:jboss:domain:undertow:10.0" default-server="default-server" default-virtual-host="default-host" default-servlet-container="default" default-security-domain="other" statistics-enabled="${wildfly.undertow.statistics-enabled:${wildfly.statistics-enabled:false}}">
             <buffer-cache name="default"/>
             <server name="default-server">
-                <ajp-listener name="ajp" max-post-size="${env.JBOSS_MAX_POST_SIZE}" socket-binding="ajp"/>
-                <http-listener name="default" socket-binding="http" redirect-socket="https" enable-http2="true" proxy-address-forwarding="true"
-                        max-post-size="${env.JBOSS_MAX_POST_SIZE}"/>
+                <ajp-listener name="ajp" socket-binding="ajp"/>
+                <http-listener name="default" socket-binding="http" redirect-socket="https" proxy-address-forwarding="true" enable-http2="true"/>
                 <host name="default-host" alias="localhost">
                     <location name="/" handler="welcome-content"/>
-                    <location name="##RESOURCEROOTURL##" handler="cmscontent"/>
                     <http-invoker security-realm="ApplicationRealm"/>
-                    <filter-ref name="x-frame-options"/>
-                    <filter-ref name="x-xss-protection"/>
-                    <filter-ref name="x-content-type-options"/>
-                    <filter-ref name="content-security-policy"/>
-                    <filter-ref name="strict-transport-security"/>
-                    <filter-ref name="server-header"/>
-                    <filter-ref name="x-powered-by-header"/>
                 </host>
             </server>
             <servlet-container name="default">
@@ -720,17 +539,7 @@
             </servlet-container>
             <handlers>
                 <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>
-                <file name="cmscontent" path="/entando-data/resources"/>
             </handlers>
-            <filters>
-                <response-header name="server-header" header-name="Server" header-value="JBoss-EAP/7"/>
-                <response-header name="x-powered-by-header" header-name="X-Powered-By" header-value="Undertow/1"/>
-                <response-header name="x-frame-options" header-name="X-Frame-Options" header-value="SAMEORIGIN"/>
-                <response-header name="x-xss-protection" header-name="X-XSS-Protection" header-value="1; mode=block"/>
-                <response-header name="x-content-type-options" header-name="X-Content-Type-Options" header-value="nosniff"/>
-                <response-header name="content-security-policy" header-name="Content-Security-Policy" header-value="script-src 'unsafe-inline' * ;"/>
-                <response-header name="strict-transport-security" header-name="Strict-Transport-Security" header-value="max-age=31536000; includeSubDomains;"/>
-            </filters>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:webservices:2.0" statistics-enabled="${wildfly.webservices.statistics-enabled:${wildfly.statistics-enabled:false}}">
             <modify-wsdl-address>true</modify-wsdl-address>
