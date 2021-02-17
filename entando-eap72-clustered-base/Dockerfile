@@ -8,7 +8,7 @@ LABEL maintainer="Ampie Barnard <a.barnard@entando.com>" \
       io.k8s.description="Platform for building and running Entando clustered applications on EAP 7.2" \
       io.k8s.display-name="Entando on EAP 7.1"
 ENV USERID_TO_USE=185 \
-    STI_SCRIPTS_PATH="/usr/local/s2i" \
+    STI_SCRIPTS_PATH="/usr/locmodulesal/s2i" \
     ENTANDO_COMMON_PATH="/entando-common"
 
 COPY --chown=185:0 --from=entando-base-common  /opt/app-root/src/wildfly/modules /opt/eap/modules

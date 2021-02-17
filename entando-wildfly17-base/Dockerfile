@@ -13,7 +13,7 @@ USER root
 RUN  yum install -y ImageMagick java-11-openjdk && yum clean all
 COPY --chown=185:0 ./contrib/wildfly-configuration/standalone.xml /wildfly/standalone/configuration/standalone.xml
 COPY --chown=185:0 ./s2i/bin/run ${STI_SCRIPTS_PATH}/run
-COPY --chown=185:0 --from=entando-base-common /opt/app-root/src/wildfly/modules /wildfly/modules
+COPY --chown=185:0 modules /wildfly/modules
 COPY --chown=185:0 --from=entando-base-common /opt/app-root/src/jetty-runner /jetty-runner
 COPY --chown=185:0 --from=entando-base-common /opt/app-root/src/.m2 $HOME/.m2
 COPY --chown=185:0 --from=entando-base-common ${ENTANDO_COMMON_PATH} ${ENTANDO_COMMON_PATH}
