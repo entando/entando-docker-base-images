@@ -1,7 +1,7 @@
 # This image provides a very lightweight base for building and running Entando
 # EAP based applications with an embedded Derby db.
 # It builds using maven and runs the resulting artifacts on EAP
-FROM entando/entando-base-common:6.3.1 AS entando-base-common
+FROM entando/entando-base-common:6.3.2 AS entando-base-common
 
 FROM registry.redhat.io/jboss-eap-7/eap73-openjdk8-openshift-rhel7
 
@@ -12,7 +12,6 @@ ENV USERID_TO_USE=185 \
     STI_SCRIPTS_PATH="/usr/local/s2i" \
     ENTANDO_COMMON_PATH="/entando-common"
 
-COPY --chown=185:0 --from=entando-base-common  /opt/app-root/src/wildfly/modules /opt/eap/modules
 COPY --chown=185:0 ./modules  /opt/eap/modules
 COPY --chown=185:0 --from=entando-base-common /opt/app-root/src/.m2  $HOME/.m2
 COPY --chown=185:0 --from=entando-base-common /opt/app-root/src/jetty-runner /jetty-runner

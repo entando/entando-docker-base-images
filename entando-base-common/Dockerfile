@@ -32,7 +32,6 @@ RUN mkdir -p /entando-data/databases  && chown -Rf $USERID_TO_USE:0 /entando-dat
 
 COPY --chown=1001:0 ./entando-common "$ENTANDO_COMMON_PATH"
 COPY --chown=1001:0 ./jetty-runner $HOME/jetty-runner
-COPY --chown=1001:0 ./wfmodules $HOME/wildfly/modules
 USER $USERID_TO_USE
 
 

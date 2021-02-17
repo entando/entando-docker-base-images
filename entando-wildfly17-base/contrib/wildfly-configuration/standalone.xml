@@ -208,16 +208,16 @@
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
                     </driver>
-                    <driver name="mysql" module="com.mysql.jdbc">
-                        <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
+                    <driver name="mysql" module="com.mysql">
+                        <xa-datasource-class>com.mysql.cj.jdbc.MysqlXADataSource</xa-datasource-class>
                     </driver>
-                    <driver name="derby" module="org.apache.derby.jdbc">
+                    <driver name="derby" module="org.apache.derby">
                         <xa-datasource-class>org.apache.derby.jdbc.EmbeddedXADataSource40</xa-datasource-class>
                     </driver>
-                    <driver name="oracle" module="com.oracle.jdbc">
+                    <driver name="oracle" module="com.oracle">
                         <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
                     </driver>
-                    <driver name="postgresql" module="org.postgresql.jdbc">
+                    <driver name="postgresql" module="org.postgresql">
                         <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
                     </driver>
                 </drivers>
