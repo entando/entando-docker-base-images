@@ -2,15 +2,16 @@
 # It builds using maven and runs the resulting artifacts on WildFly 17.0.0 Final
 FROM entando/entando-base-common:6.3.2 AS entando-base-common
 
-FROM quay.io/wildfly/wildfly-centos7:17.0
+FROM quay.io/wildfly/wildfly-centos7:23.0
 LABEL maintainer="Ampie Barnard <a.barnard@entando.com>" \
       io.k8s.description="Platform for building and running Entando quickstart applications on WildFly 17.0.0.Final" \
       io.k8s.display-name="Entando on WildFly 17.0.0.Final"
 ENV USERID_TO_USE=185 \
     STI_SCRIPTS_PATH="/usr/libexec/s2i"\
     ENTANDO_COMMON_PATH="/entando-common"
-USER root
-RUN  yum install -y ImageMagick java-11-openjdk && yum clean all
+USER root 
+RUN  yum install -y ImageMagick java-11-openjdk && yum update -y && yum clean all
+
 COPY --chown=185:0 ./contrib/wildfly-configuration/standalone.xml /wildfly/standalone/configuration/standalone.xml
 COPY --chown=185:0 ./s2i/bin/run ${STI_SCRIPTS_PATH}/run
 COPY --chown=185:0 modules /wildfly/modules
