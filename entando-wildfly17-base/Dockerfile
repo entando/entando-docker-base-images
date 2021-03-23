@@ -2,7 +2,7 @@
 # It builds using maven and runs the resulting artifacts on WildFly 17.0.0 Final
 FROM entando/entando-base-common:6.3.2 AS entando-base-common
 
-FROM quay.io/wildfly/wildfly-centos7:23.0
+FROM quay.io/wildfly/wildfly-centos7:17.0
 LABEL maintainer="Ampie Barnard <a.barnard@entando.com>" \
       io.k8s.description="Platform for building and running Entando quickstart applications on WildFly 17.0.0.Final" \
       io.k8s.display-name="Entando on WildFly 17.0.0.Final"
