@@ -3,7 +3,7 @@
 # It builds using maven and runs the resulting artifacts on EAP
 FROM entando/entando-base-common:6.3.2 AS entando-base-common
 
-FROM registry.redhat.io/jboss-eap-7/eap73-openjdk8-openshift-rhel7
+FROM registry.redhat.io/jboss-eap-7/eap73-openjdk8-openshift-rhel7:7.3.6-1
 
 LABEL maintainer="Ampie Barnard <a.barnard@entando.com>" \
       io.k8s.description="Platform for building and running Entando clustered applications on EAP 7.3" \
@@ -75,6 +75,7 @@ ENV DATASOURCES="PORTDB,SERVDB" \
     APPBUILDERBASEURL="/app-builder/"
 USER root
 RUN  yum install -y glibc-locale-source glibc-langpack-en procps && \
+     yum -y update && \
      localedef -c -f UTF-8 -i en_US en_US.UTF-8 && \
      chmod ug+rw /usr/lib/locale/locale-archive
 RUN mkdir -p /entando-data/databases  && chown -Rf $USERID_TO_USE:0 /entando-data/ && chmod -Rf ug+rw /entando-data/ && \
