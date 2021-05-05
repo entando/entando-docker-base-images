@@ -14,7 +14,7 @@
 # docker run -i --rm -p 8080:8080 quarkus/rest-json-jvm
 #
 ###
-FROM registry.access.redhat.com/ubi8/ubi-minimal:
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.3-298.1618432845
 ARG JAVA_PACKAGE=java-11-openjdk-headless
 ARG RUN_JAVA_VERSION=1.3.8
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en'
