@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 if [ -n "${ORACLE_REPO_USER}" ] && [ -n "${ORACLE_REPO_PASSWORD}" ] ; then
+    echo "USER: ${ORACLE_REPO_USER}"
+    echo "PWD: ${ORACLE_REPO_PASSWORD}"
     if ls /app/libs/ojdbc*.jar ; then
         echo "Oracle driver already  installed"
     else
