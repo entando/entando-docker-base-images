@@ -1,6 +1,10 @@
 buildPack: docker
 pipelineConfig:
   env:
+    - name: BUILDER_JX_IMAGE
+      value: ghcr.io/jenkins-x/builder-jx:2.1.155-778-patch3
+    - name: CHART_REPOSITORY
+      value: https://jenkins-x-charts.github.io/v2
     - name: PIPELINE_CODE
       value: edbi
     - name: ENTANDO_DOCKER_IMAGE_INFO_CONFIGMAP
