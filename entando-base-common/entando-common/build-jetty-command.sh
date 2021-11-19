@@ -65,7 +65,7 @@ cp -Rf protected /entando-data/
 
 
 cp /jetty-runner/jetty.xml .
-export JETTY_COMMAND="java -Ddb.startup.check=true \
+export JETTY_COMMAND="java -Ddb.migration.strategy=auto \
     -Ddb.restore.enabled=true \
     -Dentando.web.context="${ENTANDO_WEB_CONTEXT}" \
     -Dprofile.datasource.jndiname.servdb=${SERVDB_JNDI} \
