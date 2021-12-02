@@ -65,7 +65,9 @@ cp -Rf protected /entando-data/
 
 
 cp /jetty-runner/jetty.xml .
-export JETTY_COMMAND="java -Ddb.migration.strategy=auto \
+# Running without -jar option in order to add SLF4J classes to the classpath and actually see Jetty logs
+export JETTY_COMMAND="java -cp "/jetty-runner/*" \
+    -Ddb.migration.strategy=auto \
     -Ddb.restore.enabled=true \
     -Dentando.web.context="${ENTANDO_WEB_CONTEXT}" \
     -Dprofile.datasource.jndiname.servdb=${SERVDB_JNDI} \
@@ -88,6 +90,5 @@ export JETTY_COMMAND="java -Ddb.migration.strategy=auto \
     -DresourceDiskRootFolder=/entando-data/resources/ \
     -DprotectedResourceDiskRootFolder=/entando-data/protected/ \
     -DindexDiskRootFolder=/tmp/entando-indices \
-    -jar /jetty-runner/jetty-runner-${JETTY_VERSION}.jar \
-    --lib /jetty-runner \
-    jetty.xml"
+    org.eclipse.jetty.runner.Runner \
+    --lib /jetty-runner . jetty.xml"

@@ -5,7 +5,6 @@
     <Set name="contextPath">
         <SystemProperty name="entando.web.context"/>
     </Set>
-    <Set name="war">.</Set>
     <New id="portDataSource" class="org.eclipse.jetty.plus.jndi.Resource">
         <Arg>
             <SystemProperty name="profile.datasource.jndiname.portdb"/>
