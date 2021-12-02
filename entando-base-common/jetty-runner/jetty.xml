@@ -168,7 +168,7 @@
             </New>
         </Arg>
     </New>
-    <New id="widgetTypeCache" class="org.eclipse.jetty.plus.jndi.Resource">
+    <New id="dataObjectMapperCache" class="org.eclipse.jetty.plus.jndi.Resource">
         <Arg>dataObjectMapperCache</Arg>
         <Arg>
             <New class="java.util.concurrent.ConcurrentHashMap">
