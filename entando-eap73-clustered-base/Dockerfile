@@ -3,7 +3,7 @@
 # It builds using maven and runs the resulting artifacts on EAP
 FROM entando/entando-base-common:6.3.4 AS entando-base-common
 
-FROM registry.redhat.io/jboss-eap-7/eap73-openjdk8-openshift-rhel7:7.3.6-1
+FROM registry.redhat.io/jboss-eap-7/eap73-openjdk11-openshift-rhel8:7.3.9
 
 LABEL maintainer="Ampie Barnard <a.barnard@entando.com>" \
       io.k8s.description="Platform for building and running Entando clustered applications on EAP 7.3" \
