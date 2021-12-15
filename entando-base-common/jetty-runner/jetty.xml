@@ -5,7 +5,6 @@
     <Set name="contextPath">
         <SystemProperty name="entando.web.context"/>
     </Set>
-    <Set name="war">.</Set>
     <New id="portDataSource" class="org.eclipse.jetty.plus.jndi.Resource">
         <Arg>
             <SystemProperty name="profile.datasource.jndiname.portdb"/>
@@ -168,7 +167,7 @@
             </New>
         </Arg>
     </New>
-    <New id="widgetTypeCache" class="org.eclipse.jetty.plus.jndi.Resource">
+    <New id="dataObjectMapperCache" class="org.eclipse.jetty.plus.jndi.Resource">
         <Arg>dataObjectMapperCache</Arg>
         <Arg>
             <New class="java.util.concurrent.ConcurrentHashMap">

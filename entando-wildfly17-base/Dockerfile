@@ -1,6 +1,6 @@
 # This image provides a base for building and running Entando WildFly based applications.
 # It builds using maven and runs the resulting artifacts on WildFly 17.0.0 Final
-FROM entando/entando-base-common:6.3.3 AS entando-base-common
+FROM entando/entando-base-common:6.3.4 AS entando-base-common
 
 FROM quay.io/wildfly/wildfly-centos7:17.0
 LABEL maintainer="Ampie Barnard <a.barnard@entando.com>" \
