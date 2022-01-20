@@ -1,3 +1,9 @@
+# IMPORTANT - DEPRECATED REPOSITORY
+
+This repository is to be considered deprecated in favor of the following ones:
+- https://github.com/entando/entando-app-engine-base - Docker base images for Wildfly/EAP
+- https://github.com/entando/entando-java-base - Docker base image for Java based applications
+
 # How to build and push the Docker base images
 
 Please note that this project is not being built on GitHub pipelines yet. All the images should be built and pushed manually to DockerHub, so to decide which is the new version, you should check the latest one on DockerHub.
