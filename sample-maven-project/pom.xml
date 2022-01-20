@@ -86,7 +86,7 @@
         <skipDocker>true</skipDocker>
         <skipSmokeTests>true</skipSmokeTests>
         <autoCreateNetwork>true</autoCreateNetwork>
-        <entando.version>6.0.0-SNAPSHOT</entando.version>
+        <entando.version>6.2.38</entando.version>
         <entando.keycloak.plugin.version>5.1.3</entando.keycloak.plugin.version>
         <spring.version>5.0.8.RELEASE</spring.version>
         <struts2.version>2.5.17</struts2.version>
@@ -288,7 +288,7 @@
                 <skipAppBuilderImage>false</skipAppBuilderImage>
                 <jee.server>jetty</jee.server>
                 <entando.engine.address>localhost</entando.engine.address>
-                <app.builder.depends.on></app.builder.depends.on>
+                <app.builder.depends.on/>
 
                 <skipServerImage>true</skipServerImage>
                 <deployments.dir>none</deployments.dir>
@@ -388,7 +388,7 @@
             <properties>
                 <db.vendor>derby</db.vendor>
                 <skipDatabaseImage>true</skipDatabaseImage>
-                <entando.engine.depends.on></entando.engine.depends.on>
+                <entando.engine.depends.on/>
                 <!--DB connection properties-->
                 <portdb.database>portdb</portdb.database>
                 <portdb.url>jdbc:derby:${derby.base.folder}/${portdb.database};create=true</portdb.url>
@@ -907,10 +907,9 @@
                         <configuration>
                             <exportAntProperties>true</exportAntProperties>
                             <target>
-                                <taskdef resource="net/sf/antcontrib/antcontrib.properties"
-                                                                         classpathref="maven.plugin.classpath" />
+                                <taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="maven.plugin.classpath"/>
                                 <if>
-                                    <available file="src/main/webapp/WEB-INF/aps/jsp/internalservlet/api" type="dir" />
+                                    <available file="src/main/webapp/WEB-INF/aps/jsp/internalservlet/api" type="dir"/>
                                     <then>
                                         <property name="core-webapp-cant-overwrite" value="true"/>
                                     </then>
@@ -1121,7 +1120,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <execute></execute>
+                                        <execute/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
